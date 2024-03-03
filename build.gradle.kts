@@ -7,7 +7,7 @@ plugins {
     signing
 }
 
-group = "app.revanced"
+group = "dev.jkcarino"
 
 repositories {
     mavenCentral()
@@ -35,14 +35,14 @@ kotlin {
 tasks {
     withType(Jar::class) {
         manifest {
-            attributes["Name"] = "ReVanced Patches template"
-            attributes["Description"] = "Patches template for ReVanced."
+            attributes["Name"] = "Privacy ReVanced Patches"
+            attributes["Description"] = "Patches for ReVanced."
             attributes["Version"] = version
             attributes["Timestamp"] = System.currentTimeMillis().toString()
-            attributes["Source"] = "git@github.com:revanced/revanced-patches-template.git"
-            attributes["Author"] = "ReVanced"
-            attributes["Contact"] = "contact@revanced.app"
-            attributes["Origin"] = "https://revanced.app"
+            attributes["Source"] = "git@github.com:jkennethcarino/privacy-revanced-patches.git"
+            attributes["Author"] = "Ken"
+            attributes["Contact"] = "6307355+jkennethcarino@users.noreply.github.com"
+            attributes["Origin"] = "https://github.com/jkennethcarino"
             attributes["License"] = "GNU General Public License v3.0"
         }
     }
@@ -83,7 +83,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/revanced/revanced-patches-template")
+            url = uri("https://maven.pkg.github.com/jkennethcarino/privacy-revanced-patches")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
@@ -96,9 +96,9 @@ publishing {
             from(components["java"])
 
             pom {
-                name = "ReVanced Patches template"
-                description = "Patches template for ReVanced."
-                url = "https://revanced.app"
+                name = "Privacy ReVanced Patches"
+                description = "Patches for ReVanced."
+                url = "https://github.com/jkennethcarino"
 
                 licenses {
                     license {
@@ -108,15 +108,15 @@ publishing {
                 }
                 developers {
                     developer {
-                        id = "ReVanced"
-                        name = "ReVanced"
-                        email = "contact@revanced.app"
+                        id = "jkennethcarino"
+                        name = "Ken"
+                        email = "6307355+jkennethcarino@users.noreply.github.com"
                     }
                 }
                 scm {
-                    connection = "scm:git:git://github.com/revanced/revanced-patches-template.git"
-                    developerConnection = "scm:git:git@github.com:revanced/revanced-patches-template.git"
-                    url = "https://github.com/revanced/revanced-patches-template"
+                    connection = "scm:git:git://github.com/jkennethcarino/privacy-revanced-patches.git"
+                    developerConnection = "scm:git:git@github.com:jkennethcarino/privacy-revanced-patches.git"
+                    url = "https://github.com/jkennethcarino/privacy-revanced-patches"
                 }
             }
         }
