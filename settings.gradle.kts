@@ -1,4 +1,4 @@
-rootProject.name = "revanced-patches-template"
+rootProject.name = "privacy-revanced-patches"
 
 buildCache {
     local {
