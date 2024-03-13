@@ -22,6 +22,14 @@ Some of the features the patches provide are:
 
 You can use [ReVanced CLI](https://github.com/ReVanced/revanced-cli) or [ReVanced Manager](https://github.com/ReVanced/revanced-manager) to use Privacy ReVanced Patches.
 
+To use these patches with the ReVanced Manager, follow the steps below:
+1. Open the ReVanced Manager app.
+2. Select the Settings tab.
+3. In the Data sources section, click on Alternative sources.
+4. Set `jkennethcarino` as the Patches organization and `privacy-revanced-patches` as the Patches source.
+
+<img src="/assets/rvm-alternative_sources.png" width="300px" />
+
 ## 📚 Everything else
 
 ### 🛠️ Building
