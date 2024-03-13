@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.0.0...v1.1.0) (2024-03-13)
+
+
+### Features
+
+* **All - WebView:** Add `Disable Google Safe Browsing in WebView` patch ([8dfd017](https://github.com/jkennethcarino/privacy-revanced-patches/commit/8dfd017d387a13f59816a805a860fd66293ae52a))
+* **All - WebView:** Add `Disable metrics collection in WebView` patch ([d038291](https://github.com/jkennethcarino/privacy-revanced-patches/commit/d03829128f244affe286af0249a94c8d450916cf))
+
 # [1.1.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.0.0...v1.1.0-dev.1) (2024-03-13)
 
 
