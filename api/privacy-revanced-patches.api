@@ -16,3 +16,10 @@ public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeB
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
 
+public final class dev/jkcarino/revanced/util/ResourceUtilsKt {
+	public static final fun asSequence (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
+	public static final fun createElement (Lorg/w3c/dom/Document;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lorg/w3c/dom/Element;
+	public static final fun filterToElements (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
+	public static final fun firstElementByTagName (Lorg/w3c/dom/Document;Ljava/lang/String;)Lorg/w3c/dom/Element;
+}
+

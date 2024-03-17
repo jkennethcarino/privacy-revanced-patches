@@ -3,7 +3,7 @@ package dev.jkcarino.revanced.patches.all.misc.network
 import app.revanced.patcher.data.ResourceContext
 import app.revanced.patcher.patch.ResourcePatch
 import app.revanced.patcher.patch.annotation.Patch
-import org.w3c.dom.Element
+import dev.jkcarino.revanced.util.filterToElements
 
 @Patch(
     name = "Remove internet permission",
@@ -14,15 +14,14 @@ import org.w3c.dom.Element
 object RemoveInternetPermissionPatch : ResourcePatch() {
     override fun execute(context: ResourceContext) {
         context.xmlEditor["AndroidManifest.xml"].use { editor ->
-            val usesPermissions = editor.file.getElementsByTagName("uses-permission")
+            val document = editor.file
 
-            for (i in 0 until usesPermissions.length) {
-                val element = usesPermissions.item(i) as? Element ?: continue
-                if (element.getAttribute("android:name") == "android.permission.INTERNET") {
-                    element.parentNode.removeChild(element)
-                    break
+            document.getElementsByTagName("uses-permission")
+                .filterToElements()
+                .firstOrNull { it.getAttribute("android:name") == "android.permission.INTERNET" }
+                ?.let { internetPermission ->
+                    internetPermission.parentNode.removeChild(internetPermission)
                 }
-            }
         }
     }
 }
