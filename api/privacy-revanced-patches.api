@@ -1,3 +1,9 @@
+public final class dev/jkcarino/revanced/patches/all/firebase/DeactivateFirebasePerfPatch : app/revanced/patcher/patch/ResourcePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/DeactivateFirebasePerfPatch;
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
 public final class dev/jkcarino/revanced/patches/all/misc/network/RemoveInternetPermissionPatch : app/revanced/patcher/patch/ResourcePatch {
 	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/misc/network/RemoveInternetPermissionPatch;
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
