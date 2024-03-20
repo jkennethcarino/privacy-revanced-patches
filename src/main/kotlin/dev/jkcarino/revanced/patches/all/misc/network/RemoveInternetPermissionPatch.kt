@@ -3,7 +3,7 @@ package dev.jkcarino.revanced.patches.all.misc.network
 import app.revanced.patcher.data.ResourceContext
 import app.revanced.patcher.patch.ResourcePatch
 import app.revanced.patcher.patch.annotation.Patch
-import dev.jkcarino.revanced.util.filterToElements
+import dev.jkcarino.revanced.util.asElementSequence
 
 @Patch(
     name = "Remove internet permission",
@@ -17,7 +17,7 @@ object RemoveInternetPermissionPatch : ResourcePatch() {
             val document = editor.file
 
             document.getElementsByTagName("uses-permission")
-                .filterToElements()
+                .asElementSequence()
                 .firstOrNull { it.getAttribute("android:name") == "android.permission.INTERNET" }
                 ?.let { internetPermission ->
                     internetPermission.parentNode.removeChild(internetPermission)

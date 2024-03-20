@@ -1,10 +1,10 @@
-package dev.jkcarino.revanced.patches.all.firebase
+package dev.jkcarino.revanced.patches.all.firebase.performance
 
 import app.revanced.patcher.data.ResourceContext
 import app.revanced.patcher.patch.ResourcePatch
 import app.revanced.patcher.patch.annotation.Patch
+import dev.jkcarino.revanced.util.asElementSequence
 import dev.jkcarino.revanced.util.createElement
-import dev.jkcarino.revanced.util.filterToElements
 import dev.jkcarino.revanced.util.firstElementByTagName
 
 @Patch(
@@ -25,7 +25,7 @@ object DeactivateFirebasePerfPatch : ResourcePatch() {
             val application = document.firstElementByTagName("application")
 
             val firebasePerfMetaData = application.getElementsByTagName(META_DATA_TAG)
-                .filterToElements()
+                .asElementSequence()
                 .firstOrNull { it.getAttribute(ATTRIBUTE_NAME) == FIREBASE_PERF_DEACTIVATED }
                 ?.setAttribute(ATTRIBUTE_VALUE, "true")
 

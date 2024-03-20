@@ -1,5 +1,5 @@
-public final class dev/jkcarino/revanced/patches/all/firebase/DeactivateFirebasePerfPatch : app/revanced/patcher/patch/ResourcePatch {
-	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/DeactivateFirebasePerfPatch;
+public final class dev/jkcarino/revanced/patches/all/firebase/performance/DeactivateFirebasePerfPatch : app/revanced/patcher/patch/ResourcePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/performance/DeactivateFirebasePerfPatch;
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
@@ -23,9 +23,8 @@ public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeB
 }
 
 public final class dev/jkcarino/revanced/util/ResourceUtilsKt {
-	public static final fun asSequence (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
+	public static final fun asElementSequence (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
 	public static final fun createElement (Lorg/w3c/dom/Document;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lorg/w3c/dom/Element;
-	public static final fun filterToElements (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
 	public static final fun firstElementByTagName (Lorg/w3c/dom/Document;Ljava/lang/String;)Lorg/w3c/dom/Element;
 }
 
