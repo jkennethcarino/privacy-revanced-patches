@@ -1,3 +1,17 @@
+# [1.2.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.2.0-dev.1...v1.2.0-dev.2) (2024-03-24)
+
+
+### Features
+
+* **All - Firebase:** Add `Deactivate Firebase Analytics` patch ([a10d712](https://github.com/jkennethcarino/privacy-revanced-patches/commit/a10d7121116dda9ecec9c857a03c69b82a98157f))
+
+# [1.2.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.1.0...v1.2.0-dev.1) (2024-03-17)
+
+
+### Features
+
+* **All - Firebase:** Add `Deactivate Firebase Performance Monitoring` patch ([b0ac188](https://github.com/jkennethcarino/privacy-revanced-patches/commit/b0ac18839d960e084da79667d0959eec9fc54357))
+
 # [1.1.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.0.0...v1.1.0) (2024-03-13)
 
 

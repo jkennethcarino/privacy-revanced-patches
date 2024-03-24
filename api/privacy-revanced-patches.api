@@ -1,3 +1,31 @@
+public final class dev/jkcarino/revanced/patches/all/firebase/analytics/DeactivateFirebaseAnalyticsPatch : app/revanced/patcher/patch/ResourcePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/analytics/DeactivateFirebaseAnalyticsPatch;
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
+public final class dev/jkcarino/revanced/patches/all/firebase/analytics/RemoveAdServicesPatch : dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/analytics/RemoveAdServicesPatch;
+}
+
+public final class dev/jkcarino/revanced/patches/all/firebase/analytics/RemoveAdvertisingIdPatch : dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/analytics/RemoveAdvertisingIdPatch;
+}
+
+public final class dev/jkcarino/revanced/patches/all/firebase/analytics/RemoveAppMeasurementPatch : dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/analytics/RemoveAppMeasurementPatch;
+}
+
+public final class dev/jkcarino/revanced/patches/all/firebase/analytics/RemoveGoogleAnalyticsPatch : dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/analytics/RemoveGoogleAnalyticsPatch;
+}
+
+public final class dev/jkcarino/revanced/patches/all/firebase/performance/DeactivateFirebasePerfPatch : app/revanced/patcher/patch/ResourcePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/firebase/performance/DeactivateFirebasePerfPatch;
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
 public final class dev/jkcarino/revanced/patches/all/misc/network/RemoveInternetPermissionPatch : app/revanced/patcher/patch/ResourcePatch {
 	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/misc/network/RemoveInternetPermissionPatch;
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
@@ -14,5 +42,43 @@ public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeB
 	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeBrowsingPatch;
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
+public abstract class dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch : app/revanced/patcher/patch/ResourcePatch {
+	public fun <init> ([Ldev/jkcarino/revanced/patches/shared/resource/ElementProcessor;)V
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+	public final fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
+public abstract interface class dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+	public abstract fun process (Lorg/w3c/dom/Document;)V
+}
+
+public final class dev/jkcarino/revanced/patches/shared/resource/PermissionElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+	public fun <init> ([Ljava/lang/String;)V
+	public fun process (Lorg/w3c/dom/Document;)V
+}
+
+public final class dev/jkcarino/revanced/patches/shared/resource/PropertyElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+	public fun <init> ([Ljava/lang/String;)V
+	public fun process (Lorg/w3c/dom/Document;)V
+}
+
+public final class dev/jkcarino/revanced/patches/shared/resource/ReceiverElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+	public fun <init> (Ljava/lang/String;)V
+	public fun process (Lorg/w3c/dom/Document;)V
+}
+
+public final class dev/jkcarino/revanced/patches/shared/resource/ServiceElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+	public fun <init> (Ljava/lang/String;)V
+	public fun process (Lorg/w3c/dom/Document;)V
+}
+
+public final class dev/jkcarino/revanced/util/ResourceUtilsKt {
+	public static final fun asElementSequence (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
+	public static final fun createElement (Lorg/w3c/dom/Document;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lorg/w3c/dom/Element;
+	public static final fun filterElements (Lorg/w3c/dom/NodeList;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
+	public static final fun firstElementByTagName (Lorg/w3c/dom/Document;Ljava/lang/String;)Lorg/w3c/dom/Element;
+	public static final fun removeElements (Lorg/w3c/dom/Node;Ljava/util/List;)V
 }
 
