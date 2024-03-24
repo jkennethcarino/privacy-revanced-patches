@@ -2,6 +2,7 @@ package dev.jkcarino.revanced.util
 
 import org.w3c.dom.Document
 import org.w3c.dom.Element
+import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 
 /**
@@ -17,6 +18,22 @@ fun NodeList.asElementSequence(): Sequence<Element> =
     (0 until this.length)
         .asSequence()
         .mapNotNull { this.item(it) as? Element }
+
+/**
+ * Filters the elements in a [NodeList] based on the given [predicate].
+ */
+fun NodeList.filterElements(predicate: (Element) -> Boolean): List<Element> {
+    return asElementSequence().filter(predicate).toList()
+}
+
+/**
+ * Removes a list of child elements from the current [Node].
+ */
+fun Node.removeElements(elements: List<Element>) {
+    elements.forEach { element ->
+        this@removeElements.removeChild(element)
+    }
+}
 
 /**
  * Creates a new element with the specified tag name and attributes.
