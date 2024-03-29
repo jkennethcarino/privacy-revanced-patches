@@ -1,4 +1,4 @@
-# 🥷 Privacy ReVanced Patches
+# Privacy ReVanced Patches
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jkennethcarino/privacy-revanced-patches/release.yml)
 ![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)
@@ -14,19 +14,28 @@ block analytics and trackers, and much more.
 
 Some of the features the patches provide are:
 
-* ⭐ **Block analytics and trackers**: Say goodbye to analytics and trackers
-* 🚫 **Remove internet permission**: Remove unnecessary internet permission
-* ✨ **And much more!**
+* **Remove internet permission**: Remove unnecessary internet permission from apps that can function without internet access.
+* **Disable Firebase Analytics**: Permanently disable the collection of Analytics data, all associated
+    broadcast receivers and services will also be removed.
+* **Disable WebView metrics collection**: Disable the collection of diagnostic data or usage statistics
+    that are uploaded to Google.
+* **Bypass Gboard signature verification**: Bypass the signature verification when the app starts up,
+    allowing you to easily remove internet access or change its package name.
+* **And much more!**
 
-## 🚀 How to get started
+## 🚀 Getting started
 
 You can use [ReVanced CLI](https://github.com/ReVanced/revanced-cli) or [ReVanced Manager](https://github.com/ReVanced/revanced-manager) to use Privacy ReVanced Patches.
 
 To use these patches with the ReVanced Manager, follow the steps below:
-1. Open the ReVanced Manager app.
-2. Select the Settings tab.
-3. In the Data sources section, click on Alternative sources.
-4. Set `jkennethcarino` as the Patches organization and `privacy-revanced-patches` as the Patches source.
+1. Open the **ReVanced Manager** app.
+2. Select the **Settings** tab.
+3. In the **Data sources** section, enable the **Use alternative sources** option and click on the **Alternative sources**.
+4. Set the following alternative sources:
+    - Patches organization: `jkennethcarino`
+    - Patches source: `privacy-revanced-patches`
+    - Integration organization: `jkennethcarino`
+    - Integration source: `privacy-revanced-integrations`
 
 <img src="/assets/rvm-alternative_sources.png" width="300px" />
 
