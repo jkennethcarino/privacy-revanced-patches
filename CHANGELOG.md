@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.2.0...v1.3.0) (2024-03-29)
+
+
+### Features
+
+* **All - Package Name:** Add `Change package name` patch ([64c0d61](https://github.com/jkennethcarino/privacy-revanced-patches/commit/64c0d6166d3658ae9047e465d8ee3710b6ed7328))
+* **Gboard:** Add `Bypass Gboard signature verification checks` patch ([ba7db6a](https://github.com/jkennethcarino/privacy-revanced-patches/commit/ba7db6a1ae42f84666d9cd5c797fd7fa2c33171f))
+
 # [1.3.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2024-03-29)
 
 
