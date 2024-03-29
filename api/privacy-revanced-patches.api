@@ -44,6 +44,18 @@ public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeB
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
 
+public final class dev/jkcarino/revanced/patches/gboard/signature/BypassSignatureChecksPatch : app/revanced/patcher/patch/BytecodePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/gboard/signature/BypassSignatureChecksPatch;
+	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+}
+
+public final class dev/jkcarino/revanced/patches/gboard/signature/ReplaceImeLatinAppPatch : app/revanced/patcher/patch/ResourcePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/gboard/signature/ReplaceImeLatinAppPatch;
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
 public abstract class dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch : app/revanced/patcher/patch/ResourcePatch {
 	public fun <init> ([Ldev/jkcarino/revanced/patches/shared/resource/ElementProcessor;)V
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
@@ -72,6 +84,11 @@ public final class dev/jkcarino/revanced/patches/shared/resource/ReceiverElement
 public final class dev/jkcarino/revanced/patches/shared/resource/ServiceElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
 	public fun <init> (Ljava/lang/String;)V
 	public fun process (Lorg/w3c/dom/Document;)V
+}
+
+public final class dev/jkcarino/revanced/util/BytecodeUtilsKt {
+	public static final fun transformMethods (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
+	public static final fun traverseClassHierarchy (Lapp/revanced/patcher/data/BytecodeContext;Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
 }
 
 public final class dev/jkcarino/revanced/util/ResourceUtilsKt {
