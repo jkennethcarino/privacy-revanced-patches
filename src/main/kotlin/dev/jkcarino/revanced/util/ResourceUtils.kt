@@ -2,6 +2,7 @@ package dev.jkcarino.revanced.util
 
 import org.w3c.dom.Document
 import org.w3c.dom.Element
+import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 
@@ -18,6 +19,15 @@ fun NodeList.asElementSequence(): Sequence<Element> =
     (0 until this.length)
         .asSequence()
         .mapNotNull { this.item(it) as? Element }
+
+/**
+ * Converts the [NamedNodeMap] to a [Sequence] of [Node] objects, representing the
+ * attributes of the [NamedNodeMap].
+ */
+fun NamedNodeMap.asAttributeSequence(): Sequence<Node> =
+    (0 until this.length)
+        .asSequence()
+        .mapNotNull { this.item(it) }
 
 /**
  * Filters the elements in a [NodeList] based on the given [predicate].

@@ -4,7 +4,10 @@ import app.revanced.patcher.data.ResourceContext
 import app.revanced.patcher.patch.ResourcePatch
 import app.revanced.patcher.patch.annotation.Patch
 import app.revanced.patcher.patch.options.PatchOption.PatchExtensions.stringPatchOption
-import org.w3c.dom.Element
+import dev.jkcarino.revanced.util.asAttributeSequence
+import dev.jkcarino.revanced.util.asElementSequence
+import dev.jkcarino.revanced.util.firstElementByTagName
+import org.w3c.dom.NodeList
 import java.io.Closeable
 
 @Patch(
@@ -32,20 +35,38 @@ object ChangePackageNamePatch : ResourcePatch(), Closeable {
         this.context = context
     }
 
-    override fun close() =
+    override fun close() {
+        fun NodeList.searchAndReplace(old: String, new: String) {
+            asElementSequence()
+                .flatMap { it.attributes.asAttributeSequence() }
+                .filter { it.nodeValue.startsWith(old) }
+                .forEach { it.nodeValue = it.nodeValue.replace(old, new) }
+        }
+
         context.xmlEditor["AndroidManifest.xml"].use { editor ->
             val document = editor.file
+            val manifest = document.firstElementByTagName("manifest")
 
-            val replacementPackageName = packageNameOption.value
+            val replacementPackageName = packageNameOption.value!!
+            val currentPackageName = manifest.getAttribute("package")
+            val newPackageName = if (replacementPackageName != packageNameOption.default) {
+                replacementPackageName
+            } else {
+                "${currentPackageName}.revanced"
+            }
 
-            val manifest = document.getElementsByTagName("manifest").item(0) as Element
-            manifest.setAttribute(
-                "package",
-                if (replacementPackageName != packageNameOption.default) {
-                    replacementPackageName
-                } else {
-                    "${manifest.getAttribute("package")}.revanced"
-                },
-            )
+            manifest.setAttribute("package", newPackageName)
+
+            // We must replace the package name in all <provider> elements, as the
+            // installation may fail if the provider name is already in use by another package.
+            document.getElementsByTagName("provider")
+                .searchAndReplace(currentPackageName, newPackageName)
+
+            document.getElementsByTagName("permission")
+                .searchAndReplace(currentPackageName, newPackageName)
+
+            document.getElementsByTagName("uses-permission")
+                .searchAndReplace(currentPackageName, newPackageName)
         }
+    }
 }

@@ -99,6 +99,7 @@ public final class dev/jkcarino/revanced/util/BytecodeUtilsKt {
 }
 
 public final class dev/jkcarino/revanced/util/ResourceUtilsKt {
+	public static final fun asAttributeSequence (Lorg/w3c/dom/NamedNodeMap;)Lkotlin/sequences/Sequence;
 	public static final fun asElementSequence (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
 	public static final fun createElement (Lorg/w3c/dom/Document;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lorg/w3c/dom/Element;
 	public static final fun filterElements (Lorg/w3c/dom/NodeList;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
