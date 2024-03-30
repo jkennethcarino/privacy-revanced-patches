@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.3.0...v1.3.1) (2024-03-30)
+
+
+### Bug Fixes
+
+* **Change package name:** Fix installation issue due to conflicting provider name ([d79c532](https://github.com/jkennethcarino/privacy-revanced-patches/commit/d79c5321dc701d9f586316bca7e32e5f9395940e))
+
 ## [1.3.1-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.3.0...v1.3.1-dev.1) (2024-03-30)
 
 
