@@ -19,8 +19,7 @@ Some of the features the patches provide are:
     broadcast receivers and services will also be removed.
 * **Disable WebView metrics collection**: Disable the collection of diagnostic data or usage statistics
     that are uploaded to Google.
-* **Bypass Gboard signature verification**: Bypass the signature verification when the app starts up,
-    allowing you to easily remove internet access or change its package name.
+* **Bypass signature verification**: Bypass the signature verification when the app starts up.
 * **And much more!**
 
 ## 🚀 Getting started
@@ -30,12 +29,13 @@ You can use [ReVanced CLI](https://github.com/ReVanced/revanced-cli) or [ReVance
 To use these patches with the ReVanced Manager, follow the steps below:
 1. Open the **ReVanced Manager** app.
 2. Select the **Settings** tab.
-3. In the **Data sources** section, enable the **Use alternative sources** option and click on the **Alternative sources**.
-4. Set the following alternative sources:
-    - Patches organization: `jkennethcarino`
-    - Patches source: `privacy-revanced-patches`
-    - Integration organization: `jkennethcarino`
-    - Integration source: `privacy-revanced-integrations`
+3. In the **Advanced** section, enable the **Show universal patches** option.
+4. In the **Data sources** section, enable the **Use alternative sources** option and click on the **Alternative sources**.
+5. Set the following alternative sources:  
+  Patches organization: `jkennethcarino`  
+  Patches source: `privacy-revanced-patches`  
+  Integration organization: `jkennethcarino`  
+  Integration source: `privacy-revanced-integrations`
 
 <img src="/assets/rvm-alternative_sources.png" width="300px" />
 
