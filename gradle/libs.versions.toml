@@ -1,10 +1,13 @@
 [versions]
-revanced-patcher = "19.3.1"
-smali = "3.0.4"
 binary-compatibility-validator = "0.14.0"
-kotlin = "1.9.22"
+bouncycastle = "1.70"
+kotlin = "1.9.23"
+revanced-patcher = "19.3.1"
+smali = "3.0.5"
 
 [libraries]
+bouncycastle-pkix = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bouncycastle" }
+bouncycastle-provider = { module = "org.bouncycastle:bcprov-jdk15on", version.ref = "bouncycastle" }
 revanced-patcher = { module = "app.revanced:revanced-patcher", version.ref = "revanced-patcher" }
 smali = { module = "com.android.tools.smali:smali", version.ref = "smali" }
 

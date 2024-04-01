@@ -1,4 +1,5 @@
 import org.gradle.kotlin.dsl.support.listFilesOrdered
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin)
@@ -24,12 +25,20 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.bouncycastle.pkix)
+    implementation(libs.bouncycastle.provider)
     implementation(libs.revanced.patcher)
     implementation(libs.smali)
 }
 
 kotlin {
-    jvmToolchain(11)
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)
+    }
+}
+
+java {
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 tasks {
@@ -57,7 +66,8 @@ tasks {
             val d8 = File(System.getenv("ANDROID_HOME")).resolve("build-tools")
                 .listFilesOrdered().last().resolve("d8").absolutePath
 
-            val patchesJar = configurations.archives.get().allArtifacts.files.files.first().absolutePath
+            val patchesJar =
+                configurations.archives.get().allArtifacts.files.files.first().absolutePath
             val workingDirectory = layout.buildDirectory.dir("libs").get().asFile
 
             exec {
@@ -114,8 +124,10 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "scm:git:git://github.com/jkennethcarino/privacy-revanced-patches.git"
-                    developerConnection = "scm:git:git@github.com:jkennethcarino/privacy-revanced-patches.git"
+                    connection =
+                        "scm:git:git://github.com/jkennethcarino/privacy-revanced-patches.git"
+                    developerConnection =
+                        "scm:git:git@github.com:jkennethcarino/privacy-revanced-patches.git"
                     url = "https://github.com/jkennethcarino/privacy-revanced-patches"
                 }
             }

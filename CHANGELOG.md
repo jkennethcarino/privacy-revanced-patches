@@ -1,3 +1,15 @@
+# [2.0.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.3.1...v2.0.0-dev.1) (2024-04-01)
+
+
+### Features
+
+* **All - Signature:** Add `Bypass signature verification checks` patch ([4952e01](https://github.com/jkennethcarino/privacy-revanced-patches/commit/4952e019fc50ede7e6921718c183fab0e9f0e6d0))
+
+
+### BREAKING CHANGES
+
+* **All - Signature:** Gboard's `Bypass signature verification checks` patch has been removed and replaced with a universal patch.
+
 ## [1.3.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.3.0...v1.3.1) (2024-03-30)
 
 
