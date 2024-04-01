@@ -24,6 +24,8 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.bouncycastle.pkix)
+    implementation(libs.bouncycastle.provider)
     implementation(libs.revanced.patcher)
     implementation(libs.smali)
 }

@@ -39,6 +39,24 @@ public final class dev/jkcarino/revanced/patches/all/misc/packagename/ChangePack
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
 
+public final class dev/jkcarino/revanced/patches/all/signature/pmshook/BypassSignatureChecksPatch : app/revanced/patcher/patch/BytecodePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/signature/pmshook/BypassSignatureChecksPatch;
+	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+}
+
+public final class dev/jkcarino/revanced/patches/all/signature/pmshook/EncodeCertificatePatch : app/revanced/patcher/patch/RawResourcePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/signature/pmshook/EncodeCertificatePatch;
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
+public final class dev/jkcarino/revanced/patches/all/signature/pmshook/ReplaceSubApplicationPatch : app/revanced/patcher/patch/ResourcePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/signature/pmshook/ReplaceSubApplicationPatch;
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
 public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewMetricsPatch : app/revanced/patcher/patch/ResourcePatch {
 	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/webview/DisableWebViewMetricsPatch;
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
@@ -47,18 +65,6 @@ public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewMetri
 
 public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeBrowsingPatch : app/revanced/patcher/patch/ResourcePatch {
 	public static final field INSTANCE Ldev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeBrowsingPatch;
-	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
-	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
-}
-
-public final class dev/jkcarino/revanced/patches/gboard/signature/BypassSignatureChecksPatch : app/revanced/patcher/patch/BytecodePatch {
-	public static final field INSTANCE Ldev/jkcarino/revanced/patches/gboard/signature/BypassSignatureChecksPatch;
-	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
-	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
-}
-
-public final class dev/jkcarino/revanced/patches/gboard/signature/ReplaceImeLatinAppPatch : app/revanced/patcher/patch/ResourcePatch {
-	public static final field INSTANCE Ldev/jkcarino/revanced/patches/gboard/signature/ReplaceImeLatinAppPatch;
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
