@@ -3,7 +3,7 @@ binary-compatibility-validator = "0.14.0"
 bouncycastle = "1.70"
 kotlin = "1.9.22"
 revanced-patcher = "19.3.1"
-smali = "3.0.4"
+smali = "3.0.5"
 
 [libraries]
 bouncycastle-pkix = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bouncycastle" }
