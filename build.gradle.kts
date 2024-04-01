@@ -31,7 +31,13 @@ dependencies {
 }
 
 kotlin {
-    jvmToolchain(11)
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)
+    }
+}
+
+java {
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 tasks {
