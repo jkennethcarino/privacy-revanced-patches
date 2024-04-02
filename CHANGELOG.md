@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.0.0...v2.0.1) (2024-04-02)
+
+
+### Bug Fixes
+
+* **All - Signature:** Fix missing Bouncy Castle dependency ([5272e01](https://github.com/jkennethcarino/privacy-revanced-patches/commit/5272e018b70f52bc0fbf4bed1eac8e90c8b08022))
+
 # [2.0.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v1.3.1...v2.0.0) (2024-04-01)
 
 
