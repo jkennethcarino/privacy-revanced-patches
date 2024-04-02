@@ -64,7 +64,6 @@ tasks {
 
         dependencies {
             include(dependency("org.bouncycastle:.*"))
-            relocate("org.bouncycastle", "shadow.org.bouncycastle")
         }
         minimize()
     }
