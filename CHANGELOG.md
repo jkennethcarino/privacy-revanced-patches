@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.0.1...v2.0.2) (2024-04-02)
+
+
+### Bug Fixes
+
+* **All - Signature:** Attempt to fix `NoSuchProviderException` ([1facc0e](https://github.com/jkennethcarino/privacy-revanced-patches/commit/1facc0e25cfcf46ccf9746f3286e5558f864f167))
+
 ## [2.0.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.0.0...v2.0.1) (2024-04-02)
 
 
