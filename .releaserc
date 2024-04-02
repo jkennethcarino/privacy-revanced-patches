@@ -33,7 +33,7 @@
       {
         "assets": [
           {
-            "path": "build/libs/privacy-revanced-patches*"
+            "path": "build/libs/*-all*"
           }
         ],
         successComment: false

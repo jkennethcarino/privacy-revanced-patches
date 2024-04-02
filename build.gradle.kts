@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.binary.compatibility.validator)
+    alias(libs.plugins.shadow)
     `maven-publish`
     signing
 }
@@ -56,18 +57,31 @@ tasks {
         }
     }
 
+    shadowJar {
+        manifest {
+            exclude("META-INF/versions/**")
+        }
+
+        dependencies {
+            include(dependency("org.bouncycastle:.*"))
+            relocate("org.bouncycastle", "shadow.org.bouncycastle")
+        }
+        minimize()
+    }
+
     register("buildDexJar") {
         description = "Build and add a DEX to the JAR file"
         group = "build"
 
         dependsOn(build)
+        dependsOn(shadowJar)
 
         doLast {
             val d8 = File(System.getenv("ANDROID_HOME")).resolve("build-tools")
                 .listFilesOrdered().last().resolve("d8").absolutePath
 
-            val patchesJar =
-                configurations.archives.get().allArtifacts.files.files.first().absolutePath
+            val patchesJar = shadowJar.get().outputs.files.singleFile.absolutePath
+
             val workingDirectory = layout.buildDirectory.dir("libs").get().asFile
 
             exec {
@@ -124,10 +138,8 @@ publishing {
                     }
                 }
                 scm {
-                    connection =
-                        "scm:git:git://github.com/jkennethcarino/privacy-revanced-patches.git"
-                    developerConnection =
-                        "scm:git:git@github.com:jkennethcarino/privacy-revanced-patches.git"
+                    connection = "scm:git:git://github.com/jkennethcarino/privacy-revanced-patches.git"
+                    developerConnection = "scm:git:git@github.com:jkennethcarino/privacy-revanced-patches.git"
                     url = "https://github.com/jkennethcarino/privacy-revanced-patches"
                 }
             }

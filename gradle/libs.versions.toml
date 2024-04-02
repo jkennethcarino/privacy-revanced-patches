@@ -3,6 +3,7 @@ binary-compatibility-validator = "0.14.0"
 bouncycastle = "1.70"
 kotlin = "1.9.23"
 revanced-patcher = "19.3.1"
+shadow = "8.1.1"
 smali = "3.0.5"
 
 [libraries]
@@ -14,3 +15,4 @@ smali = { module = "com.android.tools.smali:smali", version.ref = "smali" }
 [plugins]
 binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-compatibility-validator" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }

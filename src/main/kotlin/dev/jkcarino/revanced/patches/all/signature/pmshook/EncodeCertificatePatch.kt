@@ -17,12 +17,6 @@ object EncodeCertificatePatch : RawResourcePatch() {
     internal lateinit var signature: String
         private set
 
-    init {
-        if (Security.getProvider(BouncyCastleProvider.PROVIDER_NAME) == null) {
-            Security.addProvider(BouncyCastleProvider())
-        }
-    }
-
     override fun execute(context: ResourceContext) {
         fun File.isCertificate(): Boolean {
             return isFile && (extension == "RSA" || extension == "DSA")
@@ -31,6 +25,9 @@ object EncodeCertificatePatch : RawResourcePatch() {
         val certificateFile = context["META-INF", true].listFiles()
             ?.firstOrNull(File::isCertificate)
             ?: throw PatchException("META-INF/*.RSA or *.DSA file not found.")
+
+        Security.removeProvider(BouncyCastleProvider.PROVIDER_NAME)
+        Security.addProvider(BouncyCastleProvider())
 
         val pkcs7 = CMSSignedData(certificateFile.readBytes())
         val certificates = pkcs7.certificates.getMatches(null)
@@ -48,5 +45,8 @@ object EncodeCertificatePatch : RawResourcePatch() {
                     .encodeToString(baos.toByteArray())
             }
         }
+
+        // We need to remove our relocated BC provider to avoid any potential issues
+        Security.removeProvider(BouncyCastleProvider.PROVIDER_NAME)
     }
 }
