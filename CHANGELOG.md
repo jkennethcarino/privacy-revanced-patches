@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.0.2...v2.0.3) (2024-04-05)
+
+
+### Bug Fixes
+
+* **All - Signature:** Fix broken patch after the recent ReVanced Manager's update ([de6ae00](https://github.com/jkennethcarino/privacy-revanced-patches/commit/de6ae00b2e67564d1d9ed2b6a1230e6aa55cdab3))
+
 ## [2.0.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.0.1...v2.0.2) (2024-04-02)
 
 
