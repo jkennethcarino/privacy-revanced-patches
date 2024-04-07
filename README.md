@@ -14,13 +14,14 @@ block analytics and trackers, and much more.
 
 Some of the features the patches provide are:
 
-* **Remove internet permission**: Remove unnecessary internet permission from apps that can function without internet access.
-* **Disable Firebase Analytics**: Permanently disable the collection of Analytics data, all associated
-    broadcast receivers and services will also be removed.
-* **Disable WebView metrics collection**: Disable the collection of diagnostic data or usage statistics
-    that are uploaded to Google.
-* **Bypass signature verification**: Bypass the signature verification when the app starts up.
-* **And much more!**
+* 🚫 **Remove internet permission**: Remove unnecessary internet permission from apps that can function without internet access.
+* 📉 **Disable Firebase Analytics**: Permanently disable the collection of Analytics data, all associated
+       broadcast receivers and services will also be removed.
+* 🌐 **Disable WebView metrics collection**: Disable the collection of diagnostic data or usage statistics
+       that are uploaded to Google.
+* 🔓 **Bypass signature verification**: Bypass the signature verification when the app starts up.
+* 🥸 **Always-incognito mode for Gboard**: Always open in incognito mode to disable typing history collection and personalization.
+* ✨ **And much more!**
 
 ## 🚀 Getting started
 

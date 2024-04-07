@@ -69,6 +69,12 @@ public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeB
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
 
+public final class dev/jkcarino/revanced/patches/gboard/AlwaysIncognitoModePatch : app/revanced/patcher/patch/BytecodePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/gboard/AlwaysIncognitoModePatch;
+	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+}
+
 public abstract class dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch : app/revanced/patcher/patch/ResourcePatch {
 	public fun <init> ([Ldev/jkcarino/revanced/patches/shared/resource/ElementProcessor;)V
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
@@ -100,6 +106,9 @@ public final class dev/jkcarino/revanced/patches/shared/resource/ServiceElement 
 }
 
 public final class dev/jkcarino/revanced/util/BytecodeUtilsKt {
+	public static final fun containsWideLiteralInstructionValue (Lcom/android/tools/smali/dexlib2/iface/Method;J)Z
+	public static final fun getException (Lapp/revanced/patcher/fingerprint/MethodFingerprint;)Lapp/revanced/patcher/patch/PatchException;
+	public static final fun indexOfFirstWideLiteralInstructionValue (Lcom/android/tools/smali/dexlib2/iface/Method;J)I
 	public static final fun transformMethods (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
 	public static final fun traverseClassHierarchy (Lapp/revanced/patcher/data/BytecodeContext;Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
 }
@@ -111,5 +120,10 @@ public final class dev/jkcarino/revanced/util/ResourceUtilsKt {
 	public static final fun filterElements (Lorg/w3c/dom/NodeList;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
 	public static final fun firstElementByTagName (Lorg/w3c/dom/Document;Ljava/lang/String;)Lorg/w3c/dom/Element;
 	public static final fun removeElements (Lorg/w3c/dom/Node;Ljava/util/List;)V
+}
+
+public abstract class dev/jkcarino/revanced/util/patch/LiteralValueFingerprint : app/revanced/patcher/fingerprint/MethodFingerprint {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Iterable;Ljava/lang/Iterable;Ljava/lang/Iterable;Lkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Iterable;Ljava/lang/Iterable;Ljava/lang/Iterable;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 }
 

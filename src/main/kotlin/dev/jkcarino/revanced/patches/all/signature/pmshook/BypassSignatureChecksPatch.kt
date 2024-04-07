@@ -15,7 +15,8 @@ import dev.jkcarino.revanced.util.traverseClassHierarchy
 
 @Patch(
     name = "Bypass signature verification checks",
-    description = "Bypasses the signature verification checks when the app starts up. This requires the original app to work properly.",
+    description = "Bypasses the signature verification checks when the app starts up. " +
+        "This requires the original, unmodified app to work properly.",
     dependencies = [
         ReplaceSubApplicationPatch::class,
         EncodeCertificatePatch::class,
