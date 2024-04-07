@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.0.3...v2.1.0) (2024-04-07)
+
+
+### Features
+
+* **Gboard:** Add `Always-incognito mode for Gboard` patch ([2a98c21](https://github.com/jkennethcarino/privacy-revanced-patches/commit/2a98c21685f4959c662df443cb12146a2178cc66))
+
 # [2.1.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.0.3...v2.1.0-dev.1) (2024-04-07)
 
 
