@@ -1,8 +1,33 @@
 package dev.jkcarino.revanced.util
 
 import app.revanced.patcher.data.BytecodeContext
+import app.revanced.patcher.fingerprint.MethodFingerprint
+import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.util.proxy.mutableTypes.MutableClass
 import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
+
+/**
+ * The [PatchException] that is thrown when failing to resolve a [MethodFingerprint].
+ */
+val MethodFingerprint.exception
+    get() = PatchException("Failed to resolve ${this.javaClass.simpleName}")
+
+/**
+ * Finds the index of the first wide literal instruction with the given value, or -1 if not found.
+ */
+fun Method.indexOfFirstWideLiteralInstructionValue(literal: Long) = implementation?.let {
+    it.instructions.indexOfFirst { instruction ->
+        (instruction as? WideLiteralInstruction)?.wideLiteral == literal
+    }
+} ?: -1
+
+/**
+ * Checks if the method contains a literal with the given value.
+ */
+fun Method.containsWideLiteralInstructionValue(literal: Long) =
+    indexOfFirstWideLiteralInstructionValue(literal) >= 0
 
 /**
  * Applies a transformation to all methods of the [MutableClass] instance.
