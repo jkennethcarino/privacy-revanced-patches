@@ -1,3 +1,10 @@
+# [3.0.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.0.0-dev.1...v3.0.0-dev.2) (2024-04-16)
+
+
+### Features
+
+* **Gboard:** Add `Enable Undo feature for Gboard` patch ([6804fd7](https://github.com/jkennethcarino/privacy-revanced-patches/commit/6804fd725764ee59690e9cabe2adc83ecbf8c2df))
+
 # [3.0.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.1.0...v3.0.0-dev.1) (2024-04-16)
 
 
