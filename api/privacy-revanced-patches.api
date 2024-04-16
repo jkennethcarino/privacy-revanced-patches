@@ -75,6 +75,12 @@ public final class dev/jkcarino/revanced/patches/google/gboard/misc/incognito/Al
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
 }
 
+public final class dev/jkcarino/revanced/patches/google/gboard/misc/undo/EnableUndoPatch : app/revanced/patcher/patch/BytecodePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/google/gboard/misc/undo/EnableUndoPatch;
+	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+}
+
 public abstract class dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch : app/revanced/patcher/patch/ResourcePatch {
 	public fun <init> ([Ldev/jkcarino/revanced/patches/shared/resource/ResourceRemover;)V
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
