@@ -1,4 +1,4 @@
-package dev.jkcarino.revanced.patches.gboard.fingerprints
+package dev.jkcarino.revanced.patches.google.gboard.misc.incognito.fingerprints
 
 import app.revanced.patcher.extensions.or
 import com.android.tools.smali.dexlib2.AccessFlags

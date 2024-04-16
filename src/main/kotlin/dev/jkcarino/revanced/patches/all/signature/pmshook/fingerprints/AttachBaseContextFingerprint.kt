@@ -15,6 +15,6 @@ internal object AttachBaseContextFingerprint : MethodFingerprint(
         Opcode.INVOKE_SUPER,
     ),
     customFingerprint = { methodDef, classDef ->
-        classDef.type.endsWith("SignatureHookApp;") && methodDef.name == "attachBaseContext"
+        classDef.type.endsWith("/SignatureHookApp;") && methodDef.name == "attachBaseContext"
     }
 )

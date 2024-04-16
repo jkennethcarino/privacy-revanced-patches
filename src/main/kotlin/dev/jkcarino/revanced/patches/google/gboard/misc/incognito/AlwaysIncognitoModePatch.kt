@@ -1,4 +1,4 @@
-package dev.jkcarino.revanced.patches.gboard
+package dev.jkcarino.revanced.patches.google.gboard.misc.incognito
 
 import app.revanced.patcher.data.BytecodeContext
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
@@ -6,7 +6,7 @@ import app.revanced.patcher.patch.BytecodePatch
 import app.revanced.patcher.patch.annotation.CompatiblePackage
 import app.revanced.patcher.patch.annotation.Patch
 import dev.jkcarino.revanced.patches.all.signature.pmshook.BypassSignatureChecksPatch
-import dev.jkcarino.revanced.patches.gboard.fingerprints.IsIncognitoModeFingerprint
+import dev.jkcarino.revanced.patches.google.gboard.misc.incognito.fingerprints.IsIncognitoModeFingerprint
 import dev.jkcarino.revanced.util.exception
 
 @Patch(

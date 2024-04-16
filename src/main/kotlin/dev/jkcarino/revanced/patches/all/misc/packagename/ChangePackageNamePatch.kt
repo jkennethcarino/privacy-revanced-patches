@@ -6,7 +6,8 @@ import app.revanced.patcher.patch.annotation.Patch
 import app.revanced.patcher.patch.options.PatchOption.PatchExtensions.stringPatchOption
 import dev.jkcarino.revanced.util.asAttributeSequence
 import dev.jkcarino.revanced.util.asElementSequence
-import dev.jkcarino.revanced.util.firstElementByTagName
+import dev.jkcarino.revanced.util.get
+import dev.jkcarino.revanced.util.set
 import org.w3c.dom.NodeList
 import java.io.Closeable
 
@@ -45,17 +46,17 @@ object ChangePackageNamePatch : ResourcePatch(), Closeable {
 
         context.xmlEditor["AndroidManifest.xml"].use { editor ->
             val document = editor.file
-            val manifest = document.firstElementByTagName("manifest")
+            val manifest = document["manifest"]
 
             val replacementPackageName = packageNameOption.value!!
-            val currentPackageName = manifest.getAttribute("package")
+            val currentPackageName = manifest["package"]
             val newPackageName = if (replacementPackageName != packageNameOption.default) {
                 replacementPackageName
             } else {
                 "${currentPackageName}.revanced"
             }
 
-            manifest.setAttribute("package", newPackageName)
+            manifest["package"] = newPackageName
 
             // We must replace the package name in all <provider> elements, as the
             // installation may fail if the provider name is already in use by another package.

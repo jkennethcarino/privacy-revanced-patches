@@ -11,6 +11,6 @@ internal object ConstructorFingerprint : MethodFingerprint(
     parameters = listOf(),
     opcodes = listOf(Opcode.INVOKE_DIRECT),
     customFingerprint = { methodDef, _ ->
-        methodDef.definingClass.endsWith("SignatureHookApp;")
+        methodDef.definingClass.endsWith("/SignatureHookApp;")
     }
 )

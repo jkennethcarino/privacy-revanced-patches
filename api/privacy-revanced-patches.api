@@ -69,38 +69,44 @@ public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeB
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
 
-public final class dev/jkcarino/revanced/patches/gboard/AlwaysIncognitoModePatch : app/revanced/patcher/patch/BytecodePatch {
-	public static final field INSTANCE Ldev/jkcarino/revanced/patches/gboard/AlwaysIncognitoModePatch;
+public final class dev/jkcarino/revanced/patches/google/gboard/misc/incognito/AlwaysIncognitoModePatch : app/revanced/patcher/patch/BytecodePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/google/gboard/misc/incognito/AlwaysIncognitoModePatch;
+	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+}
+
+public final class dev/jkcarino/revanced/patches/google/gboard/misc/undo/EnableUndoPatch : app/revanced/patcher/patch/BytecodePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/google/gboard/misc/undo/EnableUndoPatch;
 	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
 }
 
 public abstract class dev/jkcarino/revanced/patches/shared/resource/BaseResourceElementRemovalPatch : app/revanced/patcher/patch/ResourcePatch {
-	public fun <init> ([Ldev/jkcarino/revanced/patches/shared/resource/ElementProcessor;)V
+	public fun <init> ([Ldev/jkcarino/revanced/patches/shared/resource/ResourceRemover;)V
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
 	public final fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
 
-public abstract interface class dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
-	public abstract fun process (Lorg/w3c/dom/Document;)V
-}
-
-public final class dev/jkcarino/revanced/patches/shared/resource/PermissionElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+public final class dev/jkcarino/revanced/patches/shared/resource/PermissionElement : dev/jkcarino/revanced/patches/shared/resource/ResourceRemover {
 	public fun <init> ([Ljava/lang/String;)V
 	public fun process (Lorg/w3c/dom/Document;)V
 }
 
-public final class dev/jkcarino/revanced/patches/shared/resource/PropertyElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+public final class dev/jkcarino/revanced/patches/shared/resource/PropertyElement : dev/jkcarino/revanced/patches/shared/resource/ResourceRemover {
 	public fun <init> ([Ljava/lang/String;)V
 	public fun process (Lorg/w3c/dom/Document;)V
 }
 
-public final class dev/jkcarino/revanced/patches/shared/resource/ReceiverElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+public final class dev/jkcarino/revanced/patches/shared/resource/ReceiverElement : dev/jkcarino/revanced/patches/shared/resource/ResourceRemover {
 	public fun <init> (Ljava/lang/String;)V
 	public fun process (Lorg/w3c/dom/Document;)V
 }
 
-public final class dev/jkcarino/revanced/patches/shared/resource/ServiceElement : dev/jkcarino/revanced/patches/shared/resource/ElementProcessor {
+public abstract interface class dev/jkcarino/revanced/patches/shared/resource/ResourceRemover {
+	public abstract fun process (Lorg/w3c/dom/Document;)V
+}
+
+public final class dev/jkcarino/revanced/patches/shared/resource/ServiceElement : dev/jkcarino/revanced/patches/shared/resource/ResourceRemover {
 	public fun <init> (Ljava/lang/String;)V
 	public fun process (Lorg/w3c/dom/Document;)V
 }
@@ -118,8 +124,10 @@ public final class dev/jkcarino/revanced/util/ResourceUtilsKt {
 	public static final fun asElementSequence (Lorg/w3c/dom/NodeList;)Lkotlin/sequences/Sequence;
 	public static final fun createElement (Lorg/w3c/dom/Document;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lorg/w3c/dom/Element;
 	public static final fun filterElements (Lorg/w3c/dom/NodeList;Lkotlin/jvm/functions/Function1;)Ljava/util/List;
-	public static final fun firstElementByTagName (Lorg/w3c/dom/Document;Ljava/lang/String;)Lorg/w3c/dom/Element;
+	public static final fun get (Lorg/w3c/dom/Document;Ljava/lang/String;)Lorg/w3c/dom/Element;
+	public static final fun get (Lorg/w3c/dom/Element;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun removeElements (Lorg/w3c/dom/Node;Ljava/util/List;)V
+	public static final fun set (Lorg/w3c/dom/Element;Ljava/lang/String;Ljava/lang/String;)V
 }
 
 public abstract class dev/jkcarino/revanced/util/patch/LiteralValueFingerprint : app/revanced/patcher/fingerprint/MethodFingerprint {
