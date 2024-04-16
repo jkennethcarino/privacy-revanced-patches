@@ -3,9 +3,10 @@ package dev.jkcarino.revanced.patches.all.webview
 import app.revanced.patcher.data.ResourceContext
 import app.revanced.patcher.patch.ResourcePatch
 import app.revanced.patcher.patch.annotation.Patch
-import dev.jkcarino.revanced.util.createElement
 import dev.jkcarino.revanced.util.asElementSequence
-import dev.jkcarino.revanced.util.firstElementByTagName
+import dev.jkcarino.revanced.util.createElement
+import dev.jkcarino.revanced.util.get
+import dev.jkcarino.revanced.util.set
 
 @Patch(
     name = "Disable Google Safe Browsing in WebView",
@@ -22,18 +23,18 @@ object DisableWebViewSafeBrowsingPatch : ResourcePatch() {
     override fun execute(context: ResourceContext) {
         context.xmlEditor["AndroidManifest.xml"].use { editor ->
             val document = editor.file
-            val application = document.firstElementByTagName("application")
+            val application = document["application"]
 
             val webViewSafeBrowsingMetaData = application.getElementsByTagName(META_DATA_TAG)
                 .asElementSequence()
-                .firstOrNull { it.getAttribute(ATTRIBUTE_NAME) == WEBVIEW_SAFE_BROWSING }
+                .firstOrNull { it[ATTRIBUTE_NAME] == WEBVIEW_SAFE_BROWSING }
                 ?.setAttribute(ATTRIBUTE_VALUE, "false")
 
             if (webViewSafeBrowsingMetaData == null) {
                 application.appendChild(
                     document.createElement(META_DATA_TAG) {
-                        setAttribute(ATTRIBUTE_NAME, WEBVIEW_SAFE_BROWSING)
-                        setAttribute(ATTRIBUTE_VALUE, "false")
+                        this[ATTRIBUTE_NAME] = WEBVIEW_SAFE_BROWSING
+                        this[ATTRIBUTE_VALUE] = "false"
                     }
                 )
             }
