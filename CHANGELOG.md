@@ -1,3 +1,10 @@
+# [3.1.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.1.0-dev.1...v3.1.0-dev.2) (2024-04-28)
+
+
+### Features
+
+* **Gboard:** Add `Enable OCR feature for Gboard` patch ([66406a9](https://github.com/jkennethcarino/privacy-revanced-patches/commit/66406a92b6d90c06fad8717b7b2b04c7adc4fd08))
+
 # [3.1.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.0.0...v3.1.0-dev.1) (2024-04-28)
 
 
