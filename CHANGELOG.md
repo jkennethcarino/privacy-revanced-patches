@@ -1,3 +1,10 @@
+# [3.1.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.0.0...v3.1.0-dev.1) (2024-04-28)
+
+
+### Features
+
+* **Gboard:** Add `Apply AAPT workaround` patch ([bad3c31](https://github.com/jkennethcarino/privacy-revanced-patches/commit/bad3c31fc212a331661a3eb06590a10afda0a234))
+
 # [3.0.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v2.1.0...v3.0.0) (2024-04-16)
 
 
