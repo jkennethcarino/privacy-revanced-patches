@@ -69,6 +69,12 @@ public final class dev/jkcarino/revanced/patches/all/webview/DisableWebViewSafeB
 	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
 }
 
+public final class dev/jkcarino/revanced/patches/google/gboard/fixes/ApplyAaptWorkaroundPatch : app/revanced/patcher/patch/ResourcePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/google/gboard/fixes/ApplyAaptWorkaroundPatch;
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+	public fun execute (Lapp/revanced/patcher/data/ResourceContext;)V
+}
+
 public final class dev/jkcarino/revanced/patches/google/gboard/misc/incognito/AlwaysIncognitoModePatch : app/revanced/patcher/patch/BytecodePatch {
 	public static final field INSTANCE Ldev/jkcarino/revanced/patches/google/gboard/misc/incognito/AlwaysIncognitoModePatch;
 	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
