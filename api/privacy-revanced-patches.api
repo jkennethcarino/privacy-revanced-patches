@@ -81,6 +81,12 @@ public final class dev/jkcarino/revanced/patches/google/gboard/misc/incognito/Al
 	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
 }
 
+public final class dev/jkcarino/revanced/patches/google/gboard/misc/ocr/EnableOcrPatch : app/revanced/patcher/patch/BytecodePatch {
+	public static final field INSTANCE Ldev/jkcarino/revanced/patches/google/gboard/misc/ocr/EnableOcrPatch;
+	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+}
+
 public final class dev/jkcarino/revanced/patches/google/gboard/misc/undo/EnableUndoPatch : app/revanced/patcher/patch/BytecodePatch {
 	public static final field INSTANCE Ldev/jkcarino/revanced/patches/google/gboard/misc/undo/EnableUndoPatch;
 	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
