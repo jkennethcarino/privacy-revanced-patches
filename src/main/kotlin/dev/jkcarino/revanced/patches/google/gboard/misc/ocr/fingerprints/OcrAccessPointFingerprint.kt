@@ -1,11 +1,11 @@
-package dev.jkcarino.revanced.patches.google.gboard.misc.undo.fingerprints
+package dev.jkcarino.revanced.patches.google.gboard.misc.ocr.fingerprints
 
 import app.revanced.patcher.extensions.or
 import app.revanced.patcher.fingerprint.MethodFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object UndoAccessPointFingerprint : MethodFingerprint(
+internal object OcrAccessPointFingerprint : MethodFingerprint(
     returnType = "V",
     accessFlags = AccessFlags.STATIC or AccessFlags.CONSTRUCTOR,
     parameters = listOf(),
@@ -14,7 +14,7 @@ internal object UndoAccessPointFingerprint : MethodFingerprint(
         Opcode.CONST_4,
     ),
     // Sources:
-    //   - Rboard Theme Manager
-    //   - GSM Flags: https://github.com/polodarb/GMS-Flags
-    strings = listOf("undo_access_point")
+    //   - Nail Sadykov (X/Twitter: @Nail_Sadykov)
+    //   - GMS Flags: https://github.com/polodarb/GMS-Flags
+    strings = listOf("enable_ocr")
 )
