@@ -4,7 +4,7 @@ import app.revanced.patcher.data.ResourceContext
 import app.revanced.patcher.patch.ResourcePatch
 import app.revanced.patcher.patch.annotation.CompatiblePackage
 import app.revanced.patcher.patch.annotation.Patch
-import dev.jkcarino.revanced.patches.all.signature.pmshook.BypassSignatureChecksPatch
+import dev.jkcarino.revanced.patches.google.gboard.detection.signature.BypassSignaturePatch
 import dev.jkcarino.revanced.util.get
 
 @Patch(
@@ -12,7 +12,7 @@ import dev.jkcarino.revanced.util.get
     description = "Applies workaround for AAPT to fix missing or unsupported resources. " +
         "This only applies to versions 14.1.x.x and later.",
     dependencies = [
-        BypassSignatureChecksPatch::class,
+        BypassSignaturePatch::class,
     ],
     compatiblePackages = [CompatiblePackage("com.google.android.inputmethod.latin")],
     use = true

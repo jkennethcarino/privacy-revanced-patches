@@ -5,7 +5,7 @@ import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.patch.BytecodePatch
 import app.revanced.patcher.patch.annotation.CompatiblePackage
 import app.revanced.patcher.patch.annotation.Patch
-import dev.jkcarino.revanced.patches.all.signature.pmshook.BypassSignatureChecksPatch
+import dev.jkcarino.revanced.patches.google.gboard.detection.signature.BypassSignaturePatch
 import dev.jkcarino.revanced.patches.google.gboard.misc.incognito.fingerprints.IsIncognitoModeFingerprint
 import dev.jkcarino.revanced.util.exception
 
@@ -14,7 +14,7 @@ import dev.jkcarino.revanced.util.exception
     description = "Always opens Gboard in incognito mode to disable typing history collection and personalization. " +
         "This requires the original, unmodified app to work properly.",
     dependencies = [
-        BypassSignatureChecksPatch::class,
+        BypassSignaturePatch::class,
     ],
     compatiblePackages = [CompatiblePackage("com.google.android.inputmethod.latin")],
     use = false
