@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.1.0...v3.1.1) (2024-07-13)
+
+
+### Bug Fixes
+
+* **Gboard:** Implement a new patch to bypass signature checks ([b12ef78](https://github.com/jkennethcarino/privacy-revanced-patches/commit/b12ef78031af7b6263111bff8651e415100b70fb))
+
 ## [3.1.1-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.1.0...v3.1.1-dev.1) (2024-07-12)
 
 
