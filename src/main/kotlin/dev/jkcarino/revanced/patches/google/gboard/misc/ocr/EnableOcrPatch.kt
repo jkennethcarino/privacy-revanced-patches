@@ -5,7 +5,7 @@ import app.revanced.patcher.extensions.InstructionExtensions.replaceInstructions
 import app.revanced.patcher.patch.BytecodePatch
 import app.revanced.patcher.patch.annotation.CompatiblePackage
 import app.revanced.patcher.patch.annotation.Patch
-import dev.jkcarino.revanced.patches.all.signature.pmshook.BypassSignatureChecksPatch
+import dev.jkcarino.revanced.patches.google.gboard.detection.signature.BypassSignaturePatch
 import dev.jkcarino.revanced.patches.google.gboard.misc.ocr.fingerprints.OcrAccessPointFingerprint
 import dev.jkcarino.revanced.util.exception
 
@@ -14,7 +14,7 @@ import dev.jkcarino.revanced.util.exception
     description = "Enables OCR feature to extract text from images and insert it into text fields. " +
         "This requires the original, unmodified app to work properly.",
     dependencies = [
-        BypassSignatureChecksPatch::class,
+        BypassSignaturePatch::class,
     ],
     compatiblePackages = [CompatiblePackage("com.google.android.inputmethod.latin")],
     use = false
