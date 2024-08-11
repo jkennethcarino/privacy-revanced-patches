@@ -9,7 +9,7 @@ import dev.jkcarino.revanced.patches.google.gboard.detection.signature.fingerpri
 import dev.jkcarino.revanced.util.exception
 
 @Patch(
-    description = "Bypasses the signature verification checks for Gboard",
+    description = "Bypasses the signature verification checks for Gboard.",
     compatiblePackages = [CompatiblePackage("com.google.android.inputmethod.latin")],
     use = true
 )

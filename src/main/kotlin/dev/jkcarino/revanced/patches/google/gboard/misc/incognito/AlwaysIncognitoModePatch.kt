@@ -15,8 +15,7 @@ import dev.jkcarino.revanced.patches.google.gboard.misc.incognito.fingerprints.I
 
 @Patch(
     name = "Always-incognito mode for Gboard",
-    description = "Always opens Gboard in incognito mode to disable typing history collection and personalization. " +
-        "This requires the original, unmodified app to work properly.",
+    description = "Always opens Gboard in incognito mode to disable typing history collection and personalization.",
     dependencies = [
         BypassSignaturePatch::class,
     ],
