@@ -11,8 +11,7 @@ import dev.jkcarino.revanced.util.exception
 
 @Patch(
     name = "Enable OCR feature for Gboard",
-    description = "Enables OCR feature to extract text from images and insert it into text fields. " +
-        "This requires the original, unmodified app to work properly.",
+    description = "Enables OCR feature to extract text from images and insert it into text fields.",
     dependencies = [
         BypassSignaturePatch::class,
     ],

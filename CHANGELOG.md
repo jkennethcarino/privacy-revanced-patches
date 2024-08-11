@@ -1,3 +1,10 @@
+# [3.2.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.1.1...v3.2.0-dev.1) (2024-07-27)
+
+
+### Features
+
+* **Gboard - Always-incognito mode:** Add new fingerprint for inlined incognito mode check ([6aacbeb](https://github.com/jkennethcarino/privacy-revanced-patches/commit/6aacbebfbae985ea6150fb7fbbc29c4f3d4694d8))
+
 ## [3.1.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.1.0...v3.1.1) (2024-07-13)
 
 

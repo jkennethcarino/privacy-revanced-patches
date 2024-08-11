@@ -11,8 +11,7 @@ import dev.jkcarino.revanced.util.exception
 
 @Patch(
     name = "Enable Undo feature for Gboard",
-    description = "Enables undo feature to quickly undo or correct typing mistakes. " +
-        "This requires the original, unmodified app to work properly.",
+    description = "Enables undo feature to quickly undo or correct typing mistakes.",
     dependencies = [
         BypassSignaturePatch::class,
     ],
