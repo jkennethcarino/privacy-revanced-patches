@@ -1,5 +1,5 @@
 [versions]
-binary-compatibility-validator = "0.16.2"
+binary-compatibility-validator = "0.16.3"
 bouncycastle = "1.70"
 kotlin = "2.0.0"
 revanced-patcher = "19.3.1"
