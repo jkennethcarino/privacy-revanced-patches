@@ -32,11 +32,9 @@ To use these patches with the ReVanced Manager, follow the steps below:
 2. Select the **Settings** tab.
 3. In the **Advanced** section, enable the **Show universal patches** option.
 4. In the **Data sources** section, enable the **Use alternative sources** option and click on the **Alternative sources**.
-5. Set the following alternative sources:  
+5. Set the following alternative source:  
   Patches organization: `jkennethcarino`  
-  Patches source: `privacy-revanced-patches`  
-  Integration organization: `jkennethcarino`  
-  Integration source: `privacy-revanced-integrations`
+  Patches source: `privacy-revanced-patches`
 
 <img src="/assets/rvm-alternative_sources.png" width="300px" />
 
