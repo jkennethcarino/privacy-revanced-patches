@@ -1,3 +1,15 @@
+# [4.0.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.2.0...v4.0.0-dev.1) (2025-01-19)
+
+
+### Build System
+
+* Bump ReVanced Patcher ([585e891](https://github.com/jkennethcarino/privacy-revanced-patches/commit/585e89126b9bb5da693e1f318f4bb4716fc1effa))
+
+
+### BREAKING CHANGES
+
+* Various APIs have been changed or removed.
+
 # [3.2.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.1.1...v3.2.0) (2024-08-11)
 
 
