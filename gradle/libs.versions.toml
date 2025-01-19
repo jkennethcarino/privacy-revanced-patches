@@ -1,18 +1,14 @@
 [versions]
-binary-compatibility-validator = "0.16.2"
-bouncycastle = "1.70"
-kotlin = "2.0.0"
-revanced-patcher = "19.3.1"
-shadow = "8.1.1"
+bouncycastle = "1.79"
+revanced-patcher = "21.0.0"
+shadow = "9.0.0-beta4"
+# Tracking https://github.com/google/smali/issues/64.
+#noinspection GradleDependency
 smali = "3.0.5"
 
 [libraries]
-bouncycastle-pkix = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bouncycastle" }
-bouncycastle-provider = { module = "org.bouncycastle:bcprov-jdk15on", version.ref = "bouncycastle" }
-revanced-patcher = { module = "app.revanced:revanced-patcher", version.ref = "revanced-patcher" }
-smali = { module = "com.android.tools.smali:smali", version.ref = "smali" }
+bouncycastle-pkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastle" }
+bouncycastle-provider = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncycastle" }
 
 [plugins]
-binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binary-compatibility-validator" }
-kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }

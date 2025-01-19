@@ -10,6 +10,9 @@ on:
 jobs:
   release:
     name: Release
+    permissions:
+      contents: write
+      packages: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,8 +23,14 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
       - name: Cache Gradle
-        uses: burrunan/gradle-cache-action@v1
+        uses: burrunan/gradle-cache-action@v2
 
       - name: Build
         env:
@@ -46,5 +55,5 @@ jobs:
 
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.REPOSITORY_PUSH_ACCESS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm exec semantic-release
