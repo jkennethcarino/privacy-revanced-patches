@@ -1,3 +1,10 @@
+# [4.0.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.0.0-dev.1...v4.0.0-dev.2) (2025-01-19)
+
+
+### Features
+
+* **Gboard - Always-incognito mode:** Add new fingerprint for incognito mode check ([f068ff5](https://github.com/jkennethcarino/privacy-revanced-patches/commit/f068ff5f76e63f6bd1b77e1a2dcd4b1cc69e9688))
+
 # [4.0.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.2.0...v4.0.0-dev.1) (2025-01-19)
 
 
