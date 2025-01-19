@@ -20,11 +20,12 @@ val alwaysIncognitoModePatch = bytecodePatch(
 
     execute {
         val method = isIncognitoModeFingerprint.methodOrNull
+            ?: isIncognitoModeV2Fingerprint.methodOrNull
             ?: isIncognitoModeInlinedFingerprint.methodOrNull
             ?: throw PatchException("Failed to force-enable incognito mode.")
 
         when (method) {
-            isIncognitoModeInlinedFingerprint.method -> {
+            isIncognitoModeInlinedFingerprint.methodOrNull -> {
                 val patternResult = isIncognitoModeInlinedFingerprint.patternMatch!!
                 val requestIncognitoModeIndex = patternResult.endIndex
                 val isIncognitoModeIndex = patternResult.endIndex - 1
