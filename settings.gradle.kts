@@ -23,6 +23,11 @@ settings {
     extensions {
         defaultNamespace = "dev.jkcarino.extension"
 
-        proguardFiles("../proguard-rules.pro")
+        proguardFiles(
+            rootProject
+                .projectDir
+                .resolve("extensions/proguard-rules.pro")
+                .toString()
+        )
     }
 }
