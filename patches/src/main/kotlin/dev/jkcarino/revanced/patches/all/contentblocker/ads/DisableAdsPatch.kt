@@ -4,6 +4,8 @@ import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.admob.applyGoogleAdMobPatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.admob.disableGoogleAdMobOption
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.pangle.applyPanglePatch
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.pangle.disablePangleOption
 import java.util.logging.Logger
 
 @Suppress("unused")
@@ -16,6 +18,7 @@ val disableAdsPatch = bytecodePatch(
     execute {
         val options = mapOf(
             disableGoogleAdMobOption to ::applyGoogleAdMobPatch,
+            disablePangleOption to ::applyPanglePatch,
         )
 
         options.forEach { (option, patch) ->
