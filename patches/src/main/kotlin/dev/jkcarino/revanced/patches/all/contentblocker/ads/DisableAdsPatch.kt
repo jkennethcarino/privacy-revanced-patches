@@ -10,6 +10,8 @@ import dev.jkcarino.revanced.patches.all.contentblocker.ads.topon.applyTopOnPatc
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.topon.disableTopOnOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.vungle.applyVunglePatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.vungle.disableVungleOption
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.yandex.applyYandexPatch
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.yandex.disableYandexOption
 import java.util.logging.Logger
 
 @Suppress("unused")
@@ -25,6 +27,7 @@ val disableAdsPatch = bytecodePatch(
             disablePangleOption to ::applyPanglePatch,
             disableTopOnOption to ::applyTopOnPatch,
             disableVungleOption to ::applyVunglePatch,
+            disableYandexOption to ::applyYandexPatch,
         )
 
         options.forEach { (option, patch) ->
