@@ -2,6 +2,7 @@ package dev.jkcarino.revanced.util
 
 import app.revanced.patcher.FingerprintBuilder
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.instructionsOrNull
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.util.proxy.mutableTypes.MutableClass
 import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
@@ -121,17 +122,24 @@ fun BytecodePatchContext.transformMethods(
 
             mutableClass.methods
                 .filter { predicate(immutableClass, it) }
-                .forEach(transform)
+                .forEach { mutableMethod ->
+                    mutableMethod.instructionsOrNull ?: return@forEach
+                    transform(mutableMethod)
+                }
         }
 
         return
     }
 
     buildMap {
-        classes.forEach classes@{ classDef ->
+        classes.forEach { classDef ->
             val methods = buildList {
                 classDef.methods.forEach methods@{ method ->
-                    if (predicate(classDef, method)) add(method)
+                    method.instructionsOrNull ?: return@methods
+
+                    if (predicate(classDef, method)) {
+                        add(method)
+                    }
                 }
             }
 

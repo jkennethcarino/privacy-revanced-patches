@@ -6,6 +6,8 @@ import dev.jkcarino.revanced.patches.all.contentblocker.ads.admob.applyGoogleAdM
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.admob.disableGoogleAdMobOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.bigo.applyBigoPatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.bigo.disableBigoOption
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.mytarget.applyMyTargetPatch
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.mytarget.disableMyTargetOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.pangle.applyPanglePatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.pangle.disablePangleOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.topon.applyTopOnPatch
@@ -27,6 +29,7 @@ val disableAdsPatch = bytecodePatch(
         val options = mapOf(
             disableBigoOption to ::applyBigoPatch,
             disableGoogleAdMobOption to ::applyGoogleAdMobPatch,
+            disableMyTargetOption to ::applyMyTargetPatch,
             disablePangleOption to ::applyPanglePatch,
             disableTopOnOption to ::applyTopOnPatch,
             disableVungleOption to ::applyVunglePatch,
