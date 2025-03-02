@@ -8,6 +8,8 @@ import dev.jkcarino.revanced.patches.all.contentblocker.ads.applovin.applyAppLov
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.applovin.disableAppLovinMaxOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.bigo.applyBigoPatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.bigo.disableBigoOption
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.mintegral.applyMintegralPatch
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.mintegral.disableMintegralOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.mytarget.applyMyTargetPatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.mytarget.disableMyTargetOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.pangle.applyPanglePatch
@@ -32,6 +34,7 @@ val disableAdsPatch = bytecodePatch(
             disableAppLovinMaxOption to ::applyAppLovinMaxPatch,
             disableBigoOption to ::applyBigoPatch,
             disableGoogleAdMobOption to ::applyGoogleAdMobPatch,
+            disableMintegralOption to ::applyMintegralPatch,
             disableMyTargetOption to ::applyMyTargetPatch,
             disablePangleOption to ::applyPanglePatch,
             disableTopOnOption to ::applyTopOnPatch,
