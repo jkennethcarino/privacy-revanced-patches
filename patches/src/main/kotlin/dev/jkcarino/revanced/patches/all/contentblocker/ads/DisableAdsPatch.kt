@@ -18,6 +18,8 @@ import dev.jkcarino.revanced.patches.all.contentblocker.ads.pangle.applyPanglePa
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.pangle.disablePangleOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.topon.applyTopOnPatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.topon.disableTopOnOption
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.unity.applyUnityPatch
+import dev.jkcarino.revanced.patches.all.contentblocker.ads.unity.disableUnityOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.vungle.applyVunglePatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.vungle.disableVungleOption
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.yandex.applyYandexPatch
@@ -41,6 +43,7 @@ val disableAdsPatch = bytecodePatch(
             disableMyTargetOption to ::applyMyTargetPatch,
             disablePangleOption to ::applyPanglePatch,
             disableTopOnOption to ::applyTopOnPatch,
+            disableUnityOption to ::applyUnityPatch,
             disableVungleOption to ::applyVunglePatch,
             disableYandexOption to ::applyYandexPatch,
         )
