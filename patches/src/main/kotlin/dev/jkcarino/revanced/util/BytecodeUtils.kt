@@ -4,6 +4,8 @@ import app.revanced.patcher.FingerprintBuilder
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.instructionsOrNull
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patcher.patch.PatchException
+import app.revanced.patcher.util.proxy.ClassProxy
 import app.revanced.patcher.util.proxy.mutableTypes.MutableClass
 import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
 import com.android.tools.smali.dexlib2.iface.ClassDef
@@ -109,52 +111,36 @@ fun BytecodePatchContext.traverseClassHierarchy(
 }
 
 /**
- * Transforms matching methods in a class hierarchy based on the [definingClass] and/or [predicate].
+ * Returns a proxy for the given [definingClass].
  */
-fun BytecodePatchContext.transformMethods(
-    definingClass: String? = null,
+fun BytecodePatchContext.proxy(definingClass: String): ClassProxy {
+    return classBy { it.type == definingClass }
+        ?: throw PatchException("Could not find $definingClass")
+}
+
+/**
+ * Filters methods of this class based on the [predicate]. Only methods with
+ * non-null instructions are considered.
+ */
+fun ClassDef.filterMethods(
     predicate: (ClassDef, Method) -> Boolean,
-    transform: (MutableMethod) -> Unit,
-) {
-    if (!definingClass.isNullOrEmpty()) {
-        with(classBy { it.type == definingClass }) {
-            this ?: return@with
-
-            mutableClass.methods
-                .filter { predicate(immutableClass, it) }
-                .forEach { mutableMethod ->
-                    mutableMethod.instructionsOrNull ?: return@forEach
-                    transform(mutableMethod)
-                }
+): List<Method> = buildList {
+    val classDef = this@filterMethods
+    methods.forEach { method ->
+        method.instructionsOrNull ?: return@forEach
+        if (predicate(classDef, method)) {
+            add(method)
         }
-
-        return
-    }
-
-    buildMap {
-        classes.forEach { classDef ->
-            val methods = buildList {
-                classDef.methods.forEach methods@{ method ->
-                    method.instructionsOrNull ?: return@methods
-
-                    if (predicate(classDef, method)) {
-                        add(method)
-                    }
-                }
-            }
-
-            if (methods.isNotEmpty()) {
-                put(classDef, methods)
-            }
-        }
-    }.forEach { (classDef, methods) ->
-        val mutableClass = proxy(classDef).mutableClass
-
-        methods
-            .map(mutableClass::findMutableMethodOf)
-            .forEach(transform)
     }
 }
+
+/**
+ * Filters methods from all classes in the list based on the [predicate]. Only methods with
+ * non-null instructions are considered.
+ */
+fun List<ClassDef>.filterMethods(
+    predicate: (ClassDef, Method) -> Boolean,
+): List<Method> = flatMap { it.filterMethods(predicate) }
 
 /**
  * Sets the custom condition for this fingerprint to check for a literal value.

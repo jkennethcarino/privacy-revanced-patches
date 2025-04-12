@@ -2,9 +2,10 @@ package dev.jkcarino.revanced.patches.all.contentblocker.ads.unity
 
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.booleanOption
-import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import dev.jkcarino.revanced.util.filterMethods
+import dev.jkcarino.revanced.util.findMutableMethodOf
+import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
-import dev.jkcarino.revanced.util.transformMethods
 
 internal val disableUnityOption by lazy {
     booleanOption(
@@ -15,7 +16,7 @@ internal val disableUnityOption by lazy {
     )
 }
 
-internal fun BytecodePatchContext.applyUnityPatch() {
+internal fun BytecodePatchContext.applyUnityPatch() = buildList {
     val unityAdsClassDef = unityAdsIsInitializedFingerprint.originalClassDefOrNull
     val blockMethods = setOf(
         "initialize",
@@ -31,12 +32,20 @@ internal fun BytecodePatchContext.applyUnityPatch() {
         unityAdsClassDef?.type,
         "Lcom/unity3d/services/banners/BannerView;",
     ).forEach { definingClass ->
-        transformMethods(
-            definingClass = definingClass,
-            predicate = { _, method -> method.name in blockMethods },
-            transform = MutableMethod::returnEarly
-        )
+        runCatching {
+            val mutableClass = proxy(definingClass).mutableClass
+
+            mutableClass
+                .filterMethods { _, method -> method.name in blockMethods }
+                .forEach { method ->
+                    mutableClass
+                        .findMutableMethodOf(method)
+                        .returnEarly()
+                }
+        }.also(::add)
     }
 
-    unityServicesInitializeFingerprint.method.returnEarly()
+    runCatching {
+        unityServicesInitializeFingerprint.method.returnEarly()
+    }.also(::add)
 }

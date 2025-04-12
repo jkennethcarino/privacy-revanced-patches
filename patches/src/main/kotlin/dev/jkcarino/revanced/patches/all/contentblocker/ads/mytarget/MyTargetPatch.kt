@@ -2,9 +2,9 @@ package dev.jkcarino.revanced.patches.all.contentblocker.ads.mytarget
 
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.booleanOption
-import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import dev.jkcarino.revanced.util.filterMethods
+import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.returnEarly
-import dev.jkcarino.revanced.util.transformMethods
 
 internal val disableMyTargetOption by lazy {
     booleanOption(
@@ -16,39 +16,50 @@ internal val disableMyTargetOption by lazy {
     )
 }
 
-internal fun BytecodePatchContext.applyMyTargetPatch() {
+internal fun BytecodePatchContext.applyMyTargetPatch() = buildList {
     val adLoaderBlockMethods = setOf(
         "handleResult",
         "load",
         "loadFromBid",
         "show",
     )
-
     adLoaderFingerprints.forEach { fingerprint ->
-        transformMethods(
-            definingClass = fingerprint.originalClassDef.type,
-            predicate = { _, method -> method.name in adLoaderBlockMethods },
-            transform = MutableMethod::returnEarly
-        )
-    }
+        runCatching {
+            val mutableClass = fingerprint.classDef
 
-    val promoCardRecyclerViewClassDef =
-        promoCardRecyclerViewSetAdapterFingerprint.originalClassDef
+            mutableClass
+                .filterMethods { _, method -> method.name in adLoaderBlockMethods }
+                .forEach { method ->
+                    mutableClass
+                        .findMutableMethodOf(method)
+                        .returnEarly()
+                }
+        }.also(::add)
+    }
 
     val promoCardRecyclerViewBlockMethods = setOf(
         "renderCard",
         "setAdapter",
-        "setPromoCardAdapter"
+        "setPromoCardAdapter",
     )
+    runCatching {
+        val mutableClass = promoCardRecyclerViewSetAdapterFingerprint.classDef
 
-    transformMethods(
-        definingClass = promoCardRecyclerViewClassDef.type,
-        predicate = { _, method ->
-            method.name in promoCardRecyclerViewBlockMethods
-        },
-        transform = MutableMethod::returnEarly
-    )
+        mutableClass
+            .filterMethods { _, method -> method.name in promoCardRecyclerViewBlockMethods }
+            .forEach { method ->
+                mutableClass
+                    .findMutableMethodOf(method)
+                    .returnEarly()
+            }
+    }.also(::add)
 
-    onAdLoadExecutorFingerprint.method.returnEarly()
-    myTargetManagerInitSdkFingerprint.method.returnEarly()
+    listOf(
+        onAdLoadExecutorFingerprint,
+        myTargetManagerInitSdkFingerprint
+    ).forEach { fingerprint ->
+        runCatching {
+            fingerprint.method.returnEarly()
+        }.also(::add)
+    }
 }

@@ -2,9 +2,10 @@ package dev.jkcarino.revanced.patches.all.contentblocker.ads.meta
 
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.booleanOption
-import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import dev.jkcarino.revanced.util.filterMethods
+import dev.jkcarino.revanced.util.findMutableMethodOf
+import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
-import dev.jkcarino.revanced.util.transformMethods
 
 internal val disableMetaAudienceNetworkOption by lazy {
     booleanOption(
@@ -16,12 +17,12 @@ internal val disableMetaAudienceNetworkOption by lazy {
     )
 }
 
-internal fun BytecodePatchContext.applyMetaAudienceNetworkPatch() {
+internal fun BytecodePatchContext.applyMetaAudienceNetworkPatch() = buildList {
     val blockMethods = setOf(
         "loadAd",
         // Only present in interstitial ads
         "isAdLoaded",
-        "show"
+        "show",
     )
 
     setOf(
@@ -30,12 +31,20 @@ internal fun BytecodePatchContext.applyMetaAudienceNetworkPatch() {
         "Lcom/facebook/ads/RewardedInterstitialAd;",
         "Lcom/facebook/ads/RewardedVideoAd;",
     ).forEach { definingClass ->
-        transformMethods(
-            definingClass = definingClass,
-            predicate = { _, method -> method.name in blockMethods },
-            transform = MutableMethod::returnEarly
-        )
+        runCatching {
+            val mutableClass = proxy(definingClass).mutableClass
+
+            mutableClass
+                .filterMethods { _, method -> method.name in blockMethods }
+                .forEach { method ->
+                    mutableClass
+                        .findMutableMethodOf(method)
+                        .returnEarly()
+                }
+        }.also(::add)
     }
 
-    initializeFingerprint.method.returnEarly()
+    runCatching {
+        initializeFingerprint.method.returnEarly()
+    }.also(::add)
 }

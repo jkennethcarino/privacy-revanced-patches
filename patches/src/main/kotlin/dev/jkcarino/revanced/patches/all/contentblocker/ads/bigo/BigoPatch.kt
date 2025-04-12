@@ -2,9 +2,9 @@ package dev.jkcarino.revanced.patches.all.contentblocker.ads.bigo
 
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.booleanOption
-import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import dev.jkcarino.revanced.util.filterMethods
+import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.returnEarly
-import dev.jkcarino.revanced.util.transformMethods
 
 internal val disableBigoOption by lazy {
     booleanOption(
@@ -15,23 +15,29 @@ internal val disableBigoOption by lazy {
     )
 }
 
-internal fun BytecodePatchContext.applyBigoPatch() {
-    val splashAdClassDef = splashAdFingerprint.originalClassDef
+internal fun BytecodePatchContext.applyBigoPatch() = buildList {
     val blockMethods = setOf(
         "show",
         "showInAdContainer",
     )
+    runCatching {
+        val mutableClass = splashAdFingerprint.classDef
 
-    transformMethods(
-        definingClass = splashAdClassDef.type,
-        predicate = { _, method -> method.name in blockMethods },
-        transform = MutableMethod::returnEarly
-    )
+        mutableClass
+            .filterMethods { _, method -> method.name in blockMethods }
+            .forEach { method ->
+                mutableClass
+                    .findMutableMethodOf(method)
+                    .returnEarly()
+            }
+    }.also(::add)
 
     listOf(
         bigoAdSdkInitializeFingerprint,
         abstractAdLoaderLoadAdFingerprint,
     ).forEach { fingerprint ->
-        fingerprint.method.returnEarly()
+        runCatching {
+            fingerprint.method.returnEarly()
+        }.also(::add)
     }
 }

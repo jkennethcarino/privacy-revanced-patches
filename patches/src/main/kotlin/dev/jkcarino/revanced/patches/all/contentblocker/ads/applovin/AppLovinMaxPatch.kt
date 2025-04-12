@@ -2,9 +2,10 @@ package dev.jkcarino.revanced.patches.all.contentblocker.ads.applovin
 
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.booleanOption
-import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import dev.jkcarino.revanced.util.filterMethods
+import dev.jkcarino.revanced.util.findMutableMethodOf
+import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
-import dev.jkcarino.revanced.util.transformMethods
 
 internal val disableAppLovinMaxOption by lazy {
     booleanOption(
@@ -15,17 +16,25 @@ internal val disableAppLovinMaxOption by lazy {
     )
 }
 
-internal fun BytecodePatchContext.applyAppLovinMaxPatch() {
+internal fun BytecodePatchContext.applyAppLovinMaxPatch() = buildList {
     val appLovinSdkBlockMethods = setOf(
         "initialize",
         "initializeSdk",
         "isInitialized",
     )
-    transformMethods(
-        definingClass = "Lcom/applovin/sdk/AppLovinSdk;",
-        predicate = { _, method -> method.name in appLovinSdkBlockMethods },
-        transform = MutableMethod::returnEarly
-    )
+    runCatching {
+        val mutableClass =
+            proxy("Lcom/applovin/sdk/AppLovinSdk;")
+                .mutableClass
+
+        mutableClass
+            .filterMethods { _, method -> method.name in appLovinSdkBlockMethods }
+            .forEach { method ->
+                mutableClass
+                    .findMutableMethodOf(method)
+                    .returnEarly()
+            }
+    }.also(::add)
 
     val interstitialAdDialogClassDef =
         interstitialAdDialogToStringFingerprint.originalClassDefOrNull
@@ -61,10 +70,16 @@ internal fun BytecodePatchContext.applyAppLovinMaxPatch() {
         "Lcom/applovin/mediation/nativeAds/MaxNativeAdLoader;",
         "Lcom/applovin/mediation/nativeAds/MaxNativeAdView;",
     ).forEach { definingClass ->
-        transformMethods(
-            definingClass = definingClass,
-            predicate = { _, method -> method.name in blockMethods },
-            transform = MutableMethod::returnEarly
-        )
+        runCatching {
+            val mutableClass = proxy(definingClass).mutableClass
+
+            mutableClass
+                .filterMethods { _, method -> method.name in blockMethods }
+                .forEach { method ->
+                    mutableClass
+                        .findMutableMethodOf(method)
+                        .returnEarly()
+                }
+        }.also(::add)
     }
 }

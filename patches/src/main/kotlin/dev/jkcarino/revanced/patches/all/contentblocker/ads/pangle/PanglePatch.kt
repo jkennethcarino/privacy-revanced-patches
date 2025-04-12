@@ -13,6 +13,8 @@ internal val disablePangleOption by lazy {
     )
 }
 
-internal fun BytecodePatchContext.applyPanglePatch() {
-    sdkLoadAdFactoryFingerprint.method.returnEarly()
+internal fun BytecodePatchContext.applyPanglePatch() = buildList {
+    runCatching {
+        sdkLoadAdFactoryFingerprint.method.returnEarly()
+    }.also(::add)
 }

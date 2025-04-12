@@ -1,6 +1,5 @@
 package dev.jkcarino.revanced.patches.all.contentblocker.ads
 
-import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.admob.applyGoogleAdMobPatch
 import dev.jkcarino.revanced.patches.all.contentblocker.ads.admob.disableGoogleAdMobOption
@@ -54,12 +53,14 @@ val disableAdsPatch = bytecodePatch(
                 return@forEach
             }
 
-            val message = try {
-                patch()
+            val appliedPatch = patch()
+            val total = appliedPatch.size
+            val foundCount = appliedPatch.count { it.isSuccess }
 
-                "[Found] ${option.title} disabled."
-            } catch (_: PatchException) {
-                "[Skipped] ${option.title} was not found."
+            val message = when {
+                foundCount == total -> "[Found] ${option.title} disabled."
+                foundCount > 0 -> "[Found] ${option.title} partially disabled."
+                else -> "[Skipped] ${option.title} was not found."
             }
 
             logger.info(message)

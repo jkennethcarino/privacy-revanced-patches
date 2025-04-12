@@ -2,9 +2,10 @@ package dev.jkcarino.revanced.patches.all.contentblocker.ads.topon
 
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.booleanOption
-import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import dev.jkcarino.revanced.util.filterMethods
+import dev.jkcarino.revanced.util.findMutableMethodOf
+import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
-import dev.jkcarino.revanced.util.transformMethods
 
 internal val disableTopOnOption by lazy {
     booleanOption(
@@ -15,7 +16,7 @@ internal val disableTopOnOption by lazy {
     )
 }
 
-internal fun BytecodePatchContext.applyTopOnPatch() {
+internal fun BytecodePatchContext.applyTopOnPatch() = buildList {
     val blockMethods = setOf(
         "entryAdScenario",
         "load",
@@ -44,17 +45,25 @@ internal fun BytecodePatchContext.applyTopOnPatch() {
         "Lcom/anythink/rewardvideo/api/ATRewardVideoAutoAd;",
         "Lcom/anythink/splashad/api/ATSplashAd;",
     ).forEach { definingClass ->
-        transformMethods(
-            definingClass = definingClass,
-            predicate = { _, method -> method.name in blockMethods },
-            transform = MutableMethod::returnEarly
-        )
+        runCatching {
+            val mutableClass = proxy(definingClass).mutableClass
+
+            mutableClass
+                .filterMethods { _, method -> method.name in blockMethods }
+                .forEach { method ->
+                    mutableClass
+                        .findMutableMethodOf(method)
+                        .returnEarly()
+                }
+        }.also(::add)
     }
 
     listOf(
         atSdkInitFingerprint,
         atRewardedVideoAdLoadManagerShowFingerprint,
     ).forEach { fingerprint ->
-        fingerprint.method.returnEarly()
+        runCatching {
+            fingerprint.method.returnEarly()
+        }.also(::add)
     }
 }

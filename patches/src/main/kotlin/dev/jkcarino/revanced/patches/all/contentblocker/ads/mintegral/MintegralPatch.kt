@@ -2,9 +2,10 @@ package dev.jkcarino.revanced.patches.all.contentblocker.ads.mintegral
 
 import app.revanced.patcher.patch.BytecodePatchContext
 import app.revanced.patcher.patch.booleanOption
-import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
+import dev.jkcarino.revanced.util.filterMethods
+import dev.jkcarino.revanced.util.findMutableMethodOf
+import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
-import dev.jkcarino.revanced.util.transformMethods
 
 internal val disableMintegralOption by lazy {
     booleanOption(
@@ -15,7 +16,7 @@ internal val disableMintegralOption by lazy {
     )
 }
 
-internal fun BytecodePatchContext.applyMintegralPatch() {
+internal fun BytecodePatchContext.applyMintegralPatch() = buildList {
     val blockMethods = setOf(
         "init",
         "load",
@@ -45,12 +46,20 @@ internal fun BytecodePatchContext.applyMintegralPatch() {
         "Lcom/mbridge/msdk/out/MBSplashHandler;",
         "Lcom/mbridge/msdk/splash/view/MBSplashView;",
     ).forEach { definingClass ->
-        transformMethods(
-            definingClass = definingClass,
-            predicate = { _, method -> method.name in blockMethods },
-            transform = MutableMethod::returnEarly
-        )
+        runCatching {
+            val mutableClass = proxy(definingClass).mutableClass
+
+            mutableClass
+                .filterMethods { _, method -> method.name in blockMethods }
+                .forEach { method ->
+                    mutableClass
+                        .findMutableMethodOf(method)
+                        .returnEarly()
+                }
+        }.also(::add)
     }
 
-    mBridgeSdkInitFingerprint.method.returnEarly()
+    runCatching {
+        mBridgeSdkInitFingerprint.method.returnEarly()
+    }.also(::add)
 }

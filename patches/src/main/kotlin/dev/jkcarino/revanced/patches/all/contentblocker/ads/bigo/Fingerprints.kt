@@ -24,8 +24,8 @@ internal val abstractAdLoaderLoadAdFingerprint = fingerprint {
         Opcode.INVOKE_DIRECT,
     )
     custom { method, _ ->
-        method.definingClass == "Lsg/bigo/ads/controller/loader/AbstractAdLoader;" &&
-            method.name == "loadAd"
+        method.definingClass == "Lsg/bigo/ads/controller/loader/AbstractAdLoader;"
+            && method.name == "loadAd"
     }
 }
 
