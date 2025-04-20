@@ -28,7 +28,8 @@ import java.util.logging.Logger
 @Suppress("unused")
 val disableAdsPatch = bytecodePatch(
     name = "Disable mobile ads",
-    description = "Disables banner, interstitial, and other ad formats."
+    description = "Disables banner, interstitial, and other ad formats.",
+    use = false,
 ) {
     val logger = Logger.getLogger(this::class.java.name)
 
