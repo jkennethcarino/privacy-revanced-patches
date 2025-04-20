@@ -9,11 +9,13 @@ import app.revanced.patcher.util.proxy.ClassProxy
 import app.revanced.patcher.util.proxy.mutableTypes.MutableClass
 import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
 import com.android.tools.smali.dexlib2.iface.ClassDef
+import com.android.tools.smali.dexlib2.iface.Field
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.reference.Reference
+import com.android.tools.smali.dexlib2.iface.value.EncodedValue
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 /**
@@ -27,6 +29,13 @@ fun MutableClass.transformMethods(transform: MutableMethod.() -> MutableMethod) 
     val transformedMethods = methods.map { it.transform() }
     methods.clear()
     methods.addAll(transformedMethods)
+}
+
+/**
+ * Finds and returns the first matching field in the class that matches the given [field].
+ */
+fun MutableClass.findMutableFieldOf(field: Field) = this.fields.first {
+    it.name == field.name && it.type == field.type
 }
 
 /**
@@ -85,6 +94,12 @@ fun Method.containsLiteralInstruction(literal: Long) =
  */
 inline fun <reified T : Reference> Instruction.getReference() =
     (this as? ReferenceInstruction)?.reference as? T
+
+/**
+ * Returns the [Field]'s initial value as [T] or null if the initial value is not of type [T].
+ */
+inline fun <reified T : EncodedValue> Field.getEncodedValue() =
+    this.initialValue as? T
 
 /**
  * Traverses the class hierarchy starting from the given root [targetClass].
