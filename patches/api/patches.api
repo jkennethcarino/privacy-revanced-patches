@@ -1,3 +1,19 @@
+public final class dev/jkcarino/revanced/patches/all/contentblocker/ads/DisableMobileAdsPatchKt {
+	public static final fun getDisableMobileAdsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/all/contentblocker/hosts/HostBlocker {
+	public fun <init> ()V
+	public final fun clear ()V
+	public final fun extractHost (Ljava/lang/String;)Ljava/lang/String;
+	public final fun isBlocked (Ljava/lang/String;)Z
+	public final fun parse (Ljava/io/File;)V
+}
+
+public final class dev/jkcarino/revanced/patches/all/contentblocker/hosts/HostsBlockerPatchKt {
+	public static final fun getHostsBlockerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/all/detection/signature/pms/BypassSignatureChecksPatchKt {
 	public static final fun getBypassSignatureChecksPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
@@ -81,8 +97,15 @@ public final class dev/jkcarino/revanced/patches/shared/resource/ManifestKt {
 
 public final class dev/jkcarino/revanced/util/BytecodeUtilsKt {
 	public static final fun containsLiteralInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;J)Z
+	public static final fun filterMethods (Lcom/android/tools/smali/dexlib2/iface/ClassDef;Lkotlin/jvm/functions/Function2;)Ljava/util/List;
+	public static final fun filterMethods (Ljava/util/List;Lkotlin/jvm/functions/Function2;)Ljava/util/List;
+	public static final fun findMutableFieldOf (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lcom/android/tools/smali/dexlib2/iface/Field;)Lapp/revanced/patcher/util/proxy/mutableTypes/MutableField;
+	public static final fun findMutableMethodOf (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lcom/android/tools/smali/dexlib2/iface/Method;)Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;
 	public static final fun indexOfFirstLiteralInstruction (Lcom/android/tools/smali/dexlib2/iface/Method;J)I
 	public static final fun literal (Lapp/revanced/patcher/FingerprintBuilder;Lkotlin/jvm/functions/Function0;)V
+	public static final fun proxy (Lapp/revanced/patcher/patch/BytecodePatchContext;Ljava/lang/String;)Lapp/revanced/patcher/util/proxy/ClassProxy;
+	public static final fun returnEarly (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;Z)V
+	public static synthetic fun returnEarly$default (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableMethod;ZILjava/lang/Object;)V
 	public static final fun transformMethods (Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
 	public static final fun traverseClassHierarchy (Lapp/revanced/patcher/patch/BytecodePatchContext;Lapp/revanced/patcher/util/proxy/mutableTypes/MutableClass;Lkotlin/jvm/functions/Function1;)V
 }
@@ -96,5 +119,10 @@ public final class dev/jkcarino/revanced/util/ResourceUtilsKt {
 	public static final fun get (Lorg/w3c/dom/Element;Ljava/lang/String;)Ljava/lang/String;
 	public static final fun removeElements (Lorg/w3c/dom/Node;Ljava/util/List;)V
 	public static final fun set (Lorg/w3c/dom/Element;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class dev/jkcarino/revanced/util/transformation/TransformationPatchKt {
+	public static final fun transformationPatch (Lapp/revanced/patcher/patch/BytecodePatchContext;Lcom/android/tools/smali/dexlib2/iface/ClassDef;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function2;)V
+	public static synthetic fun transformationPatch$default (Lapp/revanced/patcher/patch/BytecodePatchContext;Lcom/android/tools/smali/dexlib2/iface/ClassDef;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function4;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)V
 }
 

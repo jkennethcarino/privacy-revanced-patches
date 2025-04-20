@@ -16,7 +16,7 @@ val bypassSignatureChecksPatch = bytecodePatch(
         "This requires the original, unmodified app to work properly.",
     use = false,
 ) {
-    extendWith("extensions/extension.rve")
+    extendWith("extensions/all/detection/signature/pms.rve")
 
     dependsOn(
         encodeCertificatePatch,
