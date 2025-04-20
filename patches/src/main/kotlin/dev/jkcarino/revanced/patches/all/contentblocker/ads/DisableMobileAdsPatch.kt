@@ -26,7 +26,7 @@ import dev.jkcarino.revanced.patches.all.contentblocker.ads.yandex.disableYandex
 import java.util.logging.Logger
 
 @Suppress("unused")
-val disableAdsPatch = bytecodePatch(
+val disableMobileAdsPatch = bytecodePatch(
     name = "Disable mobile ads",
     description = "Disables banner, interstitial, and other ad formats.",
     use = false,
