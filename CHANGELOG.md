@@ -1,3 +1,10 @@
+# [4.1.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.0.0...v4.1.0-dev.1) (2025-04-20)
+
+
+### Features
+
+* **All - Content Blocker:** Add `Disable mobile ads` patch ([#35](https://github.com/jkennethcarino/privacy-revanced-patches/issues/35)) ([c249e97](https://github.com/jkennethcarino/privacy-revanced-patches/commit/c249e973ecdc3e39de14efcf99e8062a9986e3fc))
+
 # [4.0.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v3.2.0...v4.0.0) (2025-01-19)
 
 
