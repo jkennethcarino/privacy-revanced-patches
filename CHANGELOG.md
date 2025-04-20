@@ -1,3 +1,11 @@
+# [4.1.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.0.0...v4.1.0) (2025-04-20)
+
+
+### Features
+
+* **All - Content Blocker:** Add `Block ads, trackers, and analytics` patch ([#37](https://github.com/jkennethcarino/privacy-revanced-patches/issues/37)) ([2ec02ed](https://github.com/jkennethcarino/privacy-revanced-patches/commit/2ec02ed6881a4d4731db5d0ed15467085a23594c))
+* **All - Content Blocker:** Add `Disable mobile ads` patch ([#35](https://github.com/jkennethcarino/privacy-revanced-patches/issues/35)) ([c249e97](https://github.com/jkennethcarino/privacy-revanced-patches/commit/c249e973ecdc3e39de14efcf99e8062a9986e3fc))
+
 # [4.1.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.1.0-dev.1...v4.1.0-dev.2) (2025-04-20)
 
 
