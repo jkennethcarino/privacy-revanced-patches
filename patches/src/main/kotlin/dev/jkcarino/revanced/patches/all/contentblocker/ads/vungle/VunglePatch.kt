@@ -7,14 +7,12 @@ import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableVungleOption by lazy {
-    booleanOption(
-        key = "disableVungle",
-        default = true,
-        title = "Liftoff Monetize",
-        description = "Disable Banner, Interstitial, Native, Rewarded, and App Open ad formats."
-    )
-}
+internal val disableVungleOption = booleanOption(
+    key = "disableVungle",
+    default = true,
+    title = "Liftoff Monetize",
+    description = "Disable Banner, Interstitial, Native, Rewarded, and App Open ad formats."
+)
 
 internal fun BytecodePatchContext.applyVunglePatch() = buildList {
     val blockMethods = setOf(

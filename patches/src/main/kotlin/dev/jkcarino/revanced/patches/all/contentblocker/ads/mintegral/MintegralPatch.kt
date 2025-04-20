@@ -7,14 +7,12 @@ import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableMintegralOption by lazy {
-    booleanOption(
-        key = "disableMintegral",
-        default = true,
-        title = "Mintegral",
-        description = "Disable Banner, Interstitial, Rewarded Video, Native, and Splash ad formats."
-    )
-}
+internal val disableMintegralOption = booleanOption(
+    key = "disableMintegral",
+    default = true,
+    title = "Mintegral",
+    description = "Disable Banner, Interstitial, Rewarded Video, Native, and Splash ad formats."
+)
 
 internal fun BytecodePatchContext.applyMintegralPatch() = buildList {
     val blockMethods = setOf(

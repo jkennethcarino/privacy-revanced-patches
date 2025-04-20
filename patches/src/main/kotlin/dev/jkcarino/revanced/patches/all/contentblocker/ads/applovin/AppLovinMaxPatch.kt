@@ -7,14 +7,12 @@ import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableAppLovinMaxOption by lazy {
-    booleanOption(
-        key = "disableAppLovinMax",
-        default = true,
-        title = "AppLovin MAX",
-        description = "Disable App Open, Banner & MREC, Interstitial, Native, and Rewarded ad formats."
-    )
-}
+internal val disableAppLovinMaxOption = booleanOption(
+    key = "disableAppLovinMax",
+    default = true,
+    title = "AppLovin MAX",
+    description = "Disable App Open, Banner & MREC, Interstitial, Native, and Rewarded ad formats."
+)
 
 internal fun BytecodePatchContext.applyAppLovinMaxPatch() = buildList {
     val appLovinSdkBlockMethods = setOf(

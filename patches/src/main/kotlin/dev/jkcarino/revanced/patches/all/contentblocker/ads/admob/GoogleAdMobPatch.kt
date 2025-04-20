@@ -11,14 +11,12 @@ import dev.jkcarino.revanced.util.getReference
 import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableGoogleAdMobOption by lazy {
-    booleanOption(
-        key = "disableGoogleAdMob",
-        default = true,
-        title = "Google AdMob",
-        description = "Disable Banner, Interstitial, Native, Rewarded, Rewarded Interstitial, and App Open ad formats."
-    )
-}
+internal val disableGoogleAdMobOption = booleanOption(
+    key = "disableGoogleAdMob",
+    default = true,
+    title = "Google AdMob",
+    description = "Disable Banner, Interstitial, Native, Rewarded, Rewarded Interstitial, and App Open ad formats."
+)
 
 internal fun BytecodePatchContext.applyGoogleAdMobPatch() = buildList {
     runCatching {

@@ -33,19 +33,31 @@ val disableAdsPatch = bytecodePatch(
 ) {
     val logger = Logger.getLogger(this::class.java.name)
 
+    val appLovinMaxOption = disableAppLovinMaxOption()
+    val bigoOption = disableBigoOption()
+    val googleAdMobOption = disableGoogleAdMobOption()
+    val metaAudienceNetworkOption = disableMetaAudienceNetworkOption()
+    val mintegralOption = disableMintegralOption()
+    val myTargetOption = disableMyTargetOption()
+    val pangleOption = disablePangleOption()
+    val topOnOption = disableTopOnOption()
+    val unityOption = disableUnityOption()
+    val vungleOption = disableVungleOption()
+    val yandexOption = disableYandexOption()
+
     execute {
         val options = mapOf(
-            disableAppLovinMaxOption to ::applyAppLovinMaxPatch,
-            disableBigoOption to ::applyBigoPatch,
-            disableGoogleAdMobOption to ::applyGoogleAdMobPatch,
-            disableMetaAudienceNetworkOption to ::applyMetaAudienceNetworkPatch,
-            disableMintegralOption to ::applyMintegralPatch,
-            disableMyTargetOption to ::applyMyTargetPatch,
-            disablePangleOption to ::applyPanglePatch,
-            disableTopOnOption to ::applyTopOnPatch,
-            disableUnityOption to ::applyUnityPatch,
-            disableVungleOption to ::applyVunglePatch,
-            disableYandexOption to ::applyYandexPatch,
+            appLovinMaxOption to ::applyAppLovinMaxPatch,
+            bigoOption to ::applyBigoPatch,
+            googleAdMobOption to ::applyGoogleAdMobPatch,
+            metaAudienceNetworkOption to ::applyMetaAudienceNetworkPatch,
+            mintegralOption to ::applyMintegralPatch,
+            myTargetOption to ::applyMyTargetPatch,
+            pangleOption to ::applyPanglePatch,
+            topOnOption to ::applyTopOnPatch,
+            unityOption to ::applyUnityPatch,
+            vungleOption to ::applyVunglePatch,
+            yandexOption to ::applyYandexPatch,
         )
 
         options.forEach { (option, patch) ->
@@ -54,14 +66,15 @@ val disableAdsPatch = bytecodePatch(
                 return@forEach
             }
 
+            val adNetwork = option.title
             val appliedPatch = patch()
             val total = appliedPatch.size
             val foundCount = appliedPatch.count { it.isSuccess }
 
             val message = when {
-                foundCount == total -> "[Found] ${option.title} disabled."
-                foundCount > 0 -> "[Found] ${option.title} partially disabled."
-                else -> "[Skipped] ${option.title} was not found."
+                foundCount == total -> "[Found] $adNetwork disabled."
+                foundCount > 0 -> "[Found] $adNetwork partially disabled."
+                else -> "[Skipped] $adNetwork was not found."
             }
 
             logger.info(message)

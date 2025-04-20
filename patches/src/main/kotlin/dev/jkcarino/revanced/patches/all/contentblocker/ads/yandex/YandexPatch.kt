@@ -9,14 +9,12 @@ import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableYandexOption by lazy {
-    booleanOption(
-        key = "disableYandex",
-        default = true,
-        title = "Yandex Advertising Network",
-        description = "Disable Banner, Interstitial, Native, Rewarded, App Open, InStream, and Feed ad formats."
-    )
-}
+internal val disableYandexOption = booleanOption(
+    key = "disableYandex",
+    default = true,
+    title = "Yandex Advertising Network",
+    description = "Disable Banner, Interstitial, Native, Rewarded, App Open, InStream, and Feed ad formats."
+)
 
 internal fun BytecodePatchContext.applyYandexPatch() = buildList {
     val blockMethods = setOf(

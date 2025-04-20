@@ -7,14 +7,12 @@ import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableUnityOption by lazy {
-    booleanOption(
-        key = "disableUnity",
-        default = true,
-        title = "Unity",
-        description = "Disable Banner, Interstitial, Native, and Rewarded Video ad formats."
-    )
-}
+internal val disableUnityOption = booleanOption(
+    key = "disableUnity",
+    default = true,
+    title = "Unity",
+    description = "Disable Banner, Interstitial, Native, and Rewarded Video ad formats."
+)
 
 internal fun BytecodePatchContext.applyUnityPatch() = buildList {
     val unityAdsClassDef = unityAdsIsInitializedFingerprint.originalClassDefOrNull

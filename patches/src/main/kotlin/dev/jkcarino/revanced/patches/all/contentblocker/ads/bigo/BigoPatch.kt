@@ -6,14 +6,12 @@ import dev.jkcarino.revanced.util.filterMethods
 import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableBigoOption by lazy {
-    booleanOption(
-        key = "disableBigo",
-        default = true,
-        title = "BIGO",
-        description = "Disable Banner, Native, Interstitial, Pop-up, Rewarded, and Splash ad formats."
-    )
-}
+internal val disableBigoOption = booleanOption(
+    key = "disableBigo",
+    default = true,
+    title = "BIGO",
+    description = "Disable Banner, Native, Interstitial, Pop-up, Rewarded, and Splash ad formats."
+)
 
 internal fun BytecodePatchContext.applyBigoPatch() = buildList {
     val blockMethods = setOf(

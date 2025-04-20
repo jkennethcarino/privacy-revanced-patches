@@ -7,14 +7,12 @@ import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableTopOnOption by lazy {
-    booleanOption(
-        key = "disableTopOn",
-        default = true,
-        title = "TopOn",
-        description = "Disable Banner, Interstitial, Native, Rewarded, and App Open ad formats."
-    )
-}
+internal val disableTopOnOption = booleanOption(
+    key = "disableTopOn",
+    default = true,
+    title = "TopOn",
+    description = "Disable Banner, Interstitial, Native, Rewarded, and App Open ad formats."
+)
 
 internal fun BytecodePatchContext.applyTopOnPatch() = buildList {
     val blockMethods = setOf(

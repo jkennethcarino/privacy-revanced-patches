@@ -7,15 +7,13 @@ import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.proxy
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableMetaAudienceNetworkOption by lazy {
-    booleanOption(
-        key = "disableMetaAudienceNetwork",
-        default = true,
-        title = "Meta Audience Network",
-        description = "Disable Banner, Medium rectangle, Interstitial, Native, Native Banner, Rewarded Video, and " +
-            "Rewarded Interstitial ad formats."
-    )
-}
+internal val disableMetaAudienceNetworkOption = booleanOption(
+    key = "disableMetaAudienceNetwork",
+    default = true,
+    title = "Meta Audience Network",
+    description = "Disable Banner, Medium rectangle, Interstitial, Native, Native Banner, Rewarded Video, and " +
+        "Rewarded Interstitial ad formats."
+)
 
 internal fun BytecodePatchContext.applyMetaAudienceNetworkPatch() = buildList {
     val blockMethods = setOf(

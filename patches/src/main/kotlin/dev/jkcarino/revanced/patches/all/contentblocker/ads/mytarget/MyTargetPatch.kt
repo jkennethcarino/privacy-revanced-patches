@@ -6,15 +6,13 @@ import dev.jkcarino.revanced.util.filterMethods
 import dev.jkcarino.revanced.util.findMutableMethodOf
 import dev.jkcarino.revanced.util.returnEarly
 
-internal val disableMyTargetOption by lazy {
-    booleanOption(
-        key = "disableMyTarget",
-        default = true,
-        title = "myTarget",
-        description = "Disable Banner, Interstitial, Rewarded, Native, Native Banner, In-Stream Video and Audio, " +
-            "and Carousel ad formats."
-    )
-}
+internal val disableMyTargetOption = booleanOption(
+    key = "disableMyTarget",
+    default = true,
+    title = "myTarget",
+    description = "Disable Banner, Interstitial, Rewarded, Native, Native Banner, In-Stream Video and Audio, " +
+        "and Carousel ad formats."
+)
 
 internal fun BytecodePatchContext.applyMyTargetPatch() = buildList {
     val adLoaderBlockMethods = setOf(
