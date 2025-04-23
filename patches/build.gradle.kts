@@ -1,36 +1,8 @@
 group = "dev.jkcarino"
 
-plugins {
-    alias(libs.plugins.shadow)
-}
-
-dependencies {
-    implementation(libs.bouncycastle.pkix)
-    implementation(libs.bouncycastle.provider)
-}
-
 kotlin {
     compilerOptions {
         freeCompilerArgs = listOf("-Xcontext-receivers")
-    }
-}
-
-tasks {
-    shadowJar {
-        archiveClassifier = ""
-
-        manifest {
-            exclude("META-INF/versions/**")
-        }
-        dependencies {
-            include(dependency("org.bouncycastle:.*"))
-            relocate("org.bouncycastle", "shadow.org.bouncycastle")
-        }
-        minimize()
-    }
-
-    named("buildAndroid").configure {
-        dependsOn(shadowJar)
     }
 }
 
