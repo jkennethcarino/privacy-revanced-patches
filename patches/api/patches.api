@@ -50,6 +50,10 @@ public final class dev/jkcarino/revanced/patches/all/firebase/performance/Deacti
 	public static final fun getDeactivateFirebasePerfPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/all/misc/identity/advertising/SpoofAdvertisingIdPatchKt {
+	public static final fun getSpoofAdvertisingIdPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/all/misc/network/RemoveInternetPermissionPatchKt {
 	public static final fun getRemoveInternetPermissionPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
