@@ -1,3 +1,10 @@
+# [4.2.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.1.0...v4.2.0-dev.1) (2025-05-12)
+
+
+### Features
+
+* **All - Identify:** Add `Spoof Advertising ID` patch ([#40](https://github.com/jkennethcarino/privacy-revanced-patches/issues/40)) ([110c7bd](https://github.com/jkennethcarino/privacy-revanced-patches/commit/110c7bd89d5ddae0eb483412efb623e7b90de1e2))
+
 # [4.1.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.0.0...v4.1.0) (2025-04-20)
 
 
