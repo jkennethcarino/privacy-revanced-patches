@@ -1,3 +1,10 @@
+# [4.2.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0-dev.1...v4.2.0-dev.2) (2025-05-21)
+
+
+### Features
+
+* **All - Signature:** Use the MT's `ApkSignatureKillerEx` to bypass signature checks ([871ffa7](https://github.com/jkennethcarino/privacy-revanced-patches/commit/871ffa7b67a017f9ee93ee9de1f3948bda8b9ebe))
+
 # [4.2.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.1.0...v4.2.0-dev.1) (2025-05-12)
 
 
