@@ -1,5 +1,9 @@
 [versions]
+hiddenApiBypass = "6.1"
 revanced-patcher = "21.0.0"
 # Tracking https://github.com/google/smali/issues/64.
 #noinspection GradleDependency
 smali = "3.0.5"
+
+[libraries]
+lsposed-hiddenApiBypass = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenApiBypass" }

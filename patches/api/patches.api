@@ -22,6 +22,10 @@ public final class dev/jkcarino/revanced/patches/all/detection/signature/pms/Enc
 	public static final fun getEncodeCertificatePatch ()Lapp/revanced/patcher/patch/RawResourcePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/all/detection/signature/pms/PackageNamePatchKt {
+	public static final fun getPackageNamePatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/all/detection/signature/pms/ReplaceSubApplicationPatchKt {
 	public static final fun getReplaceSubApplicationPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }

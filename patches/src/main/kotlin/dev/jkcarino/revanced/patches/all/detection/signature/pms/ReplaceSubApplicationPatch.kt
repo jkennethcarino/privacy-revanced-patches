@@ -14,6 +14,7 @@ private const val EXTENSION_CLASS_NAME =
 internal lateinit var originalSubApplicationClass: String
     private set
 
+@Deprecated("This patch will be removed in the future.")
 val replaceSubApplicationPatch = resourcePatch(
     description = "Replaces the sub-application with our SignatureHookApp."
 ) {
