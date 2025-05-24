@@ -1,3 +1,15 @@
+# [4.2.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0-dev.2...v4.2.0-dev.3) (2025-05-24)
+
+
+### Bug Fixes
+
+* **All - Signature:** Use the provided signature when no cert is found in META-INF ([52fbc08](https://github.com/jkennethcarino/privacy-revanced-patches/commit/52fbc08f5e5d7af334911f1ed13a8a6c5e0954c1))
+
+
+### Features
+
+* **All - Change package name:** Add toggles for changing custom permissions and providers ([11122d1](https://github.com/jkennethcarino/privacy-revanced-patches/commit/11122d12af8fd71172d0ba53d8f7bbc23c54cc2e))
+
 # [4.2.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0-dev.1...v4.2.0-dev.2) (2025-05-21)
 
 
