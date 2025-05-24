@@ -1,6 +1,7 @@
 package dev.jkcarino.revanced.patches.all.detection.signature.pms
 
 import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.stringOption
 
@@ -15,7 +16,8 @@ val bypassSignatureChecksPatch = bytecodePatch(
 
     dependsOn(
         packageNamePatch,
-        encodeCertificatePatch
+        encodeCertificatePatch,
+        replaceSubApplicationPatch
     )
 
     val packageNameOption =
@@ -24,8 +26,8 @@ val bypassSignatureChecksPatch = bytecodePatch(
             default = "Default",
             values = mapOf("Default" to "Default"),
             title = "Package name",
-            description = "The package name of the app, if modified. This must be the same as the " +
-                "package name defined in the AndroidManifest.xml.",
+            description = "The package name of the app, if modified. This must match the package name defined " +
+                "when the 'Change package name' patch is selected or as defined in the AndroidManifest.xml.",
             required = true,
         ) { packageName ->
             val packageNamePattern = """^[a-z]\w*(\.[a-z]\w*)+$""".toRegex()
@@ -67,7 +69,7 @@ val bypassSignatureChecksPatch = bytecodePatch(
             val customSignature = signatureOption.value!!
             val signature =
                 if (customSignature == signatureOption.default) {
-                    signature
+                    signature ?: throw PatchException("Please provide a valid signature encoded in Base64.")
                 } else {
                     customSignature.trim()
                 }

@@ -6,6 +6,7 @@ import dev.jkcarino.revanced.patches.shared.resource.androidManifest
 import dev.jkcarino.revanced.util.get
 
 internal lateinit var appPackageName: String
+    private set
 
 val packageNamePatch = resourcePatch(
     description = "Extracts the package name of the app."

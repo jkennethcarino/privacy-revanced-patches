@@ -1,13 +1,13 @@
 package dev.jkcarino.revanced.patches.all.detection.signature.pms
 
-import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.rawResourcePatch
 import java.io.File
 import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate
 import java.util.Base64
+import java.util.logging.Logger
 
-internal lateinit var signature: String
+internal var signature: String? = null
     private set
 
 val encodeCertificatePatch = rawResourcePatch(
@@ -20,7 +20,12 @@ val encodeCertificatePatch = rawResourcePatch(
 
         val certificateFile = get("META-INF").listFiles()
             ?.firstOrNull(File::isCertificate)
-            ?: throw PatchException("No META-INF/*.RSA, .DSA, or .EC found in APK.")
+
+        if (certificateFile == null) {
+            return@execute Logger
+                .getLogger(this::class.java.name)
+                .info("No META-INF/*.RSA, .DSA, or .EC found in APK.")
+        }
 
         val certificateFactory = CertificateFactory.getInstance("X.509")
         val certificates = certificateFile
