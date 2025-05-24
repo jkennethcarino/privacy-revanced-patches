@@ -1,10 +1,11 @@
 package dev.jkcarino.revanced.patches.all.misc.packagename
 
+import app.revanced.patcher.patch.booleanOption
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patcher.patch.stringOption
+import dev.jkcarino.revanced.patches.shared.resource.ANDROID_NAME_ATTR
 import dev.jkcarino.revanced.patches.shared.resource.MANIFEST_NODE
 import dev.jkcarino.revanced.patches.shared.resource.androidManifest
-import dev.jkcarino.revanced.util.asAttributeSequence
 import dev.jkcarino.revanced.util.asElementSequence
 import dev.jkcarino.revanced.util.get
 import dev.jkcarino.revanced.util.set
@@ -25,35 +26,88 @@ val changePackageNamePatch = resourcePatch(
             title = "Package name",
             description = "The name of the package to rename the app to.",
             required = true,
-        ) {
-            it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+\$"))
+        ) { packageName ->
+            val packageNamePattern = """^[a-z]\w*(\.[a-z]\w*)+$""".toRegex()
+            packageName == "Default" || packageName!!.matches(packageNamePattern)
         }
+
+    val updatePermissions by booleanOption(
+        key = "updatePermissions",
+        default = false,
+        title = "Update permissions",
+        description = "Update compatibility receiver permissions. " +
+            "Enabling this can fix installation errors, but this can also break features in certain apps.",
+    )
+
+    val updateOtherPermissions by booleanOption(
+        key = "updateOtherPermissions",
+        default = false,
+        title = "Update other permissions",
+        description = "Update other permissions declared by the app. " +
+            "Enabling this can fix installation errors, but this can also break features in certain apps.",
+    )
+
+    val updateProviders by booleanOption(
+        key = "updateProviders",
+        default = false,
+        title = "Update content providers",
+        description = "Update content provider URI authorities. " +
+            "Enabling this can fix installation errors, but this can also break features in certain apps.",
+    )
 
     finalize {
-        fun NodeList.searchAndReplace(old: String, new: String) {
-            asElementSequence()
-                .flatMap { it.attributes.asAttributeSequence() }
-                .filter { it.nodeValue.startsWith(old) }
-                .forEach { it.nodeValue = it.nodeValue.replace(old, new) }
-        }
-
         androidManifest {
             val manifest = this[MANIFEST_NODE]
             val packageName = manifest["package"]
             val replacementPackageName = packageNameOption.value!!
-            val newPackageName = if (replacementPackageName != packageNameOption.default) {
-                replacementPackageName
-            } else {
-                "${packageName}.revanced"
-            }
+            val newPackageName =
+                if (replacementPackageName == packageNameOption.default) {
+                    "${packageName}.revanced"
+                } else {
+                    replacementPackageName
+                }
 
             manifest["package"] = newPackageName
 
-            // We must replace the package name in all <provider> elements, as the
-            // installation may fail if the provider name is already in use by another package.
-            setOf("provider", "permission", "uses-permission")
-                .map(::getElementsByTagName)
-                .forEach { it.searchAndReplace(packageName, newPackageName) }
+            if (updatePermissions == true || updateOtherPermissions == true) {
+                val receiverNotExported = "DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+
+                setOf("permission", "uses-permission")
+                    .asSequence()
+                    .map(::getElementsByTagName)
+                    .flatMap(NodeList::asElementSequence)
+                    .filter { element ->
+                        val nameAttrValue = element[ANDROID_NAME_ATTR]
+
+                        val isReceiverPermission = updatePermissions == true
+                            && nameAttrValue == "$packageName.$receiverNotExported"
+                        val isCustomPermission = updateOtherPermissions == true
+                            && nameAttrValue.startsWith(packageName)
+
+                        isReceiverPermission || isCustomPermission
+                    }
+                    .forEach { element ->
+                        element[ANDROID_NAME_ATTR] = element[ANDROID_NAME_ATTR].replace(
+                            oldValue = packageName,
+                            newValue = newPackageName
+                        )
+                    }
+            }
+
+            if (updateProviders == true) {
+                val authoritiesAttr = "android:authorities"
+
+                manifest
+                    .getElementsByTagName("provider")
+                    .asElementSequence()
+                    .filter { it[authoritiesAttr].startsWith(packageName) }
+                    .forEach { provider ->
+                        provider[authoritiesAttr] = provider[authoritiesAttr].replace(
+                            oldValue = packageName,
+                            newValue = newPackageName
+                        )
+                    }
+            }
         }
     }
 }
