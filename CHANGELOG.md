@@ -1,3 +1,18 @@
+# [4.2.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.1.0...v4.2.0) (2025-07-13)
+
+
+### Bug Fixes
+
+* **All - Signature:** Use the provided signature when no cert is found in META-INF ([52fbc08](https://github.com/jkennethcarino/privacy-revanced-patches/commit/52fbc08f5e5d7af334911f1ed13a8a6c5e0954c1))
+
+
+### Features
+
+* **All - Change package name:** Add toggles for changing custom permissions and providers ([11122d1](https://github.com/jkennethcarino/privacy-revanced-patches/commit/11122d12af8fd71172d0ba53d8f7bbc23c54cc2e))
+* **All - Identify:** Add `Spoof Advertising ID` patch ([#40](https://github.com/jkennethcarino/privacy-revanced-patches/issues/40)) ([110c7bd](https://github.com/jkennethcarino/privacy-revanced-patches/commit/110c7bd89d5ddae0eb483412efb623e7b90de1e2))
+* **All - Signature:** Use the MT's `ApkSignatureKillerEx` to bypass signature checks ([871ffa7](https://github.com/jkennethcarino/privacy-revanced-patches/commit/871ffa7b67a017f9ee93ee9de1f3948bda8b9ebe))
+* **Reddit:** Add `Remove ads, annoyances, and telemetry` patch ([#44](https://github.com/jkennethcarino/privacy-revanced-patches/issues/44)) ([a43dd38](https://github.com/jkennethcarino/privacy-revanced-patches/commit/a43dd3884550ed87a8982204dc3ed84cacac2c71))
+
 # [4.2.0-dev.4](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0-dev.3...v4.2.0-dev.4) (2025-07-13)
 
 
