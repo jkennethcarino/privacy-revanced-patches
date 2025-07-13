@@ -1,4 +1,5 @@
 [versions]
+agp = "8.2.2"
 hiddenApiBypass = "6.1"
 revanced-patcher = "21.0.0"
 # Tracking https://github.com/google/smali/issues/64.
@@ -7,3 +8,6 @@ smali = "3.0.5"
 
 [libraries]
 lsposed-hiddenApiBypass = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenApiBypass" }
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "agp" }
