@@ -1,61 +1,46 @@
 package dev.jkcarino.revanced.patches.all.detection.signature.pms
 
-import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.rawResourcePatch
-import org.bouncycastle.cms.CMSSignedData
-import org.bouncycastle.jce.provider.BouncyCastleProvider
-import java.io.ByteArrayOutputStream
-import java.io.DataOutputStream
 import java.io.File
-import java.security.Security
+import java.security.cert.CertificateFactory
+import java.security.cert.X509Certificate
 import java.util.Base64
+import java.util.logging.Logger
 
-internal lateinit var signature: String
+internal var signature: String? = null
     private set
 
 val encodeCertificatePatch = rawResourcePatch(
-    description = "Extracts and encodes the digital certificate to Base64."
+    description = "Extracts and encodes the digital certificate/signature to Base64."
 ) {
     execute {
         fun File.isCertificate(): Boolean {
-            return isFile && (extension == "RSA" || extension == "DSA")
+            return isFile && extension in setOf("RSA", "DSA", "EC")
         }
 
         val certificateFile = get("META-INF").listFiles()
             ?.firstOrNull(File::isCertificate)
-            ?: throw PatchException("META-INF/*.RSA or *.DSA file not found.")
 
-        val originalBcProvider = Security.getProvider(BouncyCastleProvider.PROVIDER_NAME)
-        val relocatedBcProvider = BouncyCastleProvider()
-
-        if (originalBcProvider != null) {
-            Security.removeProvider(originalBcProvider.name)
+        if (certificateFile == null) {
+            return@execute Logger
+                .getLogger(this::class.java.name)
+                .info("No META-INF/*.RSA, .DSA, or .EC found in APK.")
         }
-        Security.addProvider(relocatedBcProvider)
 
-        val pkcs7 = CMSSignedData(certificateFile.readBytes())
-        val certificates = pkcs7.certificates.getMatches(null)
-
-        ByteArrayOutputStream().use { baos ->
-            DataOutputStream(baos).use { dos ->
-                dos.write(certificates.size)
-                certificates.forEach { certificate ->
-                    val data = certificate.encoded
-                    dos.writeInt(data.size)
-                    dos.write(data)
-                }
-
-                signature = Base64.getEncoder()
-                    .encodeToString(baos.toByteArray())
+        val certificateFactory = CertificateFactory.getInstance("X.509")
+        val certificates = certificateFile
+            .inputStream()
+            .use { inputStream ->
+                certificateFactory
+                    .generateCertificates(inputStream)
+                    .filterIsInstance<X509Certificate>()
             }
-        }
 
-        // We need to remove our relocated BC provider to avoid any potential issues
-        Security.removeProvider(relocatedBcProvider.name)
-
-        if (originalBcProvider != null) {
-            // and make sure to revert back to the original if there's any
-            Security.addProvider(originalBcProvider)
-        }
+        signature = certificates
+            .joinToString { certificate ->
+                Base64
+                    .getEncoder()
+                    .encodeToString(certificate.encoded)
+            }
     }
 }

@@ -1,14 +1,13 @@
 [versions]
-bouncycastle = "1.79"
+agp = "8.2.2"
+hiddenApiBypass = "6.1"
 revanced-patcher = "21.0.0"
-shadow = "9.0.0-beta4"
 # Tracking https://github.com/google/smali/issues/64.
 #noinspection GradleDependency
 smali = "3.0.5"
 
 [libraries]
-bouncycastle-pkix = { module = "org.bouncycastle:bcpkix-jdk18on", version.ref = "bouncycastle" }
-bouncycastle-provider = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncycastle" }
+lsposed-hiddenApiBypass = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenApiBypass" }
 
 [plugins]
-shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+android-library = { id = "com.android.library", version.ref = "agp" }

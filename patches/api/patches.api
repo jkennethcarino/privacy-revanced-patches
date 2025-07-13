@@ -22,6 +22,10 @@ public final class dev/jkcarino/revanced/patches/all/detection/signature/pms/Enc
 	public static final fun getEncodeCertificatePatch ()Lapp/revanced/patcher/patch/RawResourcePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/all/detection/signature/pms/PackageNamePatchKt {
+	public static final fun getPackageNamePatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/all/detection/signature/pms/ReplaceSubApplicationPatchKt {
 	public static final fun getReplaceSubApplicationPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
@@ -48,6 +52,10 @@ public final class dev/jkcarino/revanced/patches/all/firebase/analytics/RemoveGo
 
 public final class dev/jkcarino/revanced/patches/all/firebase/performance/DeactivateFirebasePerfPatchKt {
 	public static final fun getDeactivateFirebasePerfPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/all/misc/identity/advertising/SpoofAdvertisingIdPatchKt {
+	public static final fun getSpoofAdvertisingIdPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
 public final class dev/jkcarino/revanced/patches/all/misc/network/RemoveInternetPermissionPatchKt {
@@ -84,6 +92,10 @@ public final class dev/jkcarino/revanced/patches/google/gboard/misc/ocr/EnableOc
 
 public final class dev/jkcarino/revanced/patches/google/gboard/misc/undo/EnableUndoPatchKt {
 	public static final fun getEnableUndoPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/reddit/RemoveAdsAndTelemetryPatchKt {
+	public static final fun getRemoveAdsAndTelemetry ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
 public final class dev/jkcarino/revanced/patches/shared/resource/ManifestKt {
