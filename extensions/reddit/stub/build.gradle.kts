@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "dev.jkcarino.extension"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
