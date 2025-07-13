@@ -1,3 +1,10 @@
+# [4.2.0-dev.4](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0-dev.3...v4.2.0-dev.4) (2025-07-13)
+
+
+### Features
+
+* **Reddit:** Add `Remove ads, annoyances, and telemetry` patch ([#44](https://github.com/jkennethcarino/privacy-revanced-patches/issues/44)) ([a43dd38](https://github.com/jkennethcarino/privacy-revanced-patches/commit/a43dd3884550ed87a8982204dc3ed84cacac2c71))
+
 # [4.2.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0-dev.2...v4.2.0-dev.3) (2025-05-24)
 
 
