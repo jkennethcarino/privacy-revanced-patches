@@ -1,8 +1,10 @@
 package dev.jkcarino.revanced.patches.reddit
 
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patcher.patch.bytecodePatch
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction11x
 import dev.jkcarino.revanced.util.proxy
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Ldev/jkcarino/extension/reddit/AdBlockInterceptor;"
@@ -20,14 +22,17 @@ val removeAdsAndTelemetry = bytecodePatch(
 
     execute {
         okHttpConstructorFingerprint.method.apply {
-            val interceptorsIndex = okHttpConstructorFingerprint.patternMatch!!.endIndex + 1
+            val interceptorsIndex = okHttpConstructorFingerprint.patternMatch!!.endIndex
+            val interceptorsInstruction = getInstruction<BuilderInstruction11x>(interceptorsIndex)
+            val interceptorsRegister = interceptorsInstruction.registerA
+            val adBlockInterceptorRegister = interceptorsRegister + 1
 
             addInstructions(
-                index = interceptorsIndex,
+                index = interceptorsIndex + 1,
                 smaliInstructions = """
                     invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->getInstance()$EXTENSION_CLASS_DESCRIPTOR
-                    move-result-object v3
-                    invoke-virtual {v3, v2}, $EXTENSION_CLASS_DESCRIPTOR->inject(Ljava/util/List;)V
+                    move-result-object v$adBlockInterceptorRegister
+                    invoke-virtual {v$adBlockInterceptorRegister, v$interceptorsRegister}, $EXTENSION_CLASS_DESCRIPTOR->inject(Ljava/util/List;)V
                 """
             )
         }
@@ -59,36 +64,20 @@ val removeAdsAndTelemetry = bytecodePatch(
             val bufferCloneIndex = sourceGetBufferIndex + 2
             val bufferReadStringIndex = interceptFingerprint.patternMatch!!.endIndex
 
-            replaceInstruction(
-                index = responseBodySourceIndex,
-                smaliInstruction = """
-                    invoke-virtual {v0}, Lokhttp3/ResponseBody;->source()$bufferedSource
-                """
-            )
-            replaceInstruction(
-                index = sourceRequestIndex,
-                smaliInstruction = """
-                    invoke-interface {v0, v2, v3}, $bufferedSource->request(J)Z
-                """
-            )
-            replaceInstruction(
-                index = sourceGetBufferIndex,
-                smaliInstruction = """
-                    invoke-interface {v0}, $bufferedSource->$getBuffer()$buffer
-                """
-            )
-            replaceInstruction(
-                index = bufferCloneIndex,
-                smaliInstruction = """
-                    invoke-virtual {v0}, $buffer->$realClone()$buffer
-                """
-            )
-            replaceInstruction(
-                index = bufferReadStringIndex,
-                smaliInstruction = """
-                    invoke-virtual {v0, v2}, $buffer->$readString(Ljava/nio/charset/Charset;)Ljava/lang/String;
-                """
-            )
+            mapOf(
+                responseBodySourceIndex to
+                    "invoke-virtual {v0}, Lokhttp3/ResponseBody;->source()$bufferedSource",
+                sourceRequestIndex to
+                    "invoke-interface {v0, v2, v3}, $bufferedSource->request(J)Z",
+                sourceGetBufferIndex to
+                    "invoke-interface {v0}, $bufferedSource->$getBuffer()$buffer",
+                bufferCloneIndex to
+                    "invoke-virtual {v0}, $buffer->$realClone()$buffer",
+                bufferReadStringIndex to
+                    "invoke-virtual {v0, v2}, $buffer->$readString(Ljava/nio/charset/Charset;)Ljava/lang/String;"
+            ).forEach { (index, smali) ->
+                replaceInstruction(index, smali)
+            }
         }
     }
 }
