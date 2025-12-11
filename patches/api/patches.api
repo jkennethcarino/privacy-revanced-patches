@@ -106,6 +106,10 @@ public final class dev/jkcarino/revanced/patches/reddit/layout/screenshotbanner/
 	public static final fun getDisableScreenshotBannerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/reddit/misc/sharing/url/SanitizeShareLinkPatchKt {
+	public static final fun getSanitizeShareLinkPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/shared/resource/ManifestKt {
 	public static final fun androidManifest (Lapp/revanced/patcher/patch/ResourcePatchContext;Lkotlin/jvm/functions/Function1;)Lorg/w3c/dom/Document;
 	public static final fun metaData (Lorg/w3c/dom/Document;[Lkotlin/Pair;)V
