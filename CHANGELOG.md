@@ -1,3 +1,16 @@
+# [4.3.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0...v4.3.0) (2025-12-11)
+
+
+### Bug Fixes
+
+* **Reddit - Remove ads, annoyances, and telemetry:** Support the latest version ([e0ccec9](https://github.com/jkennethcarino/privacy-revanced-patches/commit/e0ccec9cc2a10ac0938dbb99615e23fdc9ebe1ef))
+
+
+### Features
+
+* **Reddit:** Add `Disable screenshot banner` patch ([4d2ee3e](https://github.com/jkennethcarino/privacy-revanced-patches/commit/4d2ee3e1718a0442d1f36c39cd3c38f24981c88b))
+* **Reddit:** Add `Sanitize share links` patch ([0bcdcb8](https://github.com/jkennethcarino/privacy-revanced-patches/commit/0bcdcb86d387073e072abf37cf336926eedbae2f))
+
 # [4.3.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.1-dev.1...v4.3.0-dev.1) (2025-12-11)
 
 
