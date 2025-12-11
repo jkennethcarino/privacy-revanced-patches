@@ -1,4 +1,4 @@
-package dev.jkcarino.revanced.patches.reddit
+package dev.jkcarino.revanced.patches.reddit.ad
 
 import app.revanced.patcher.fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -42,11 +42,11 @@ internal val okHttpConstructorFingerprint = fingerprint {
         Opcode.MOVE_OBJECT_FROM16,
         Opcode.CONST_STRING,
         Opcode.INVOKE_STATIC,
-        Opcode.INVOKE_DIRECT,
-        Opcode.INVOKE_VIRTUAL,
+        null,
+        null,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IPUT_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
+        null,
         Opcode.MOVE_RESULT_OBJECT,
     )
 }
