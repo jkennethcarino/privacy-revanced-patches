@@ -1,3 +1,10 @@
+# [4.4.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.2...v4.4.0-dev.3) (2025-12-17)
+
+
+### Bug Fixes
+
+* **Reddit - Remove ads and telemetry:** Respect user's recommendation preferences ([3a820ee](https://github.com/jkennethcarino/privacy-revanced-patches/commit/3a820eef43a7d318ec29ec3cdea36c8ecbac4df1))
+
 # [4.4.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.1...v4.4.0-dev.2) (2025-12-17)
 
 
