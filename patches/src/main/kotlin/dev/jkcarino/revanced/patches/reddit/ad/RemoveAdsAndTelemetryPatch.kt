@@ -7,7 +7,8 @@ import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction11x
 import dev.jkcarino.revanced.util.proxy
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Ldev/jkcarino/extension/reddit/AdBlockInterceptor;"
+private const val EXTENSION_CLASS_DESCRIPTOR =
+    "Ldev/jkcarino/extension/reddit/frontpage/AdBlockInterceptor;"
 
 @Suppress("unused")
 val removeAdsAndTelemetryPatch = bytecodePatch(
@@ -16,7 +17,7 @@ val removeAdsAndTelemetryPatch = bytecodePatch(
         "Custom feeds, Search, and Subreddits, including comments.",
     use = true
 ) {
-    extendWith("extensions/reddit.rve")
+    extendWith("extensions/reddit/frontpage.rve")
 
     compatibleWith("com.reddit.frontpage")
 

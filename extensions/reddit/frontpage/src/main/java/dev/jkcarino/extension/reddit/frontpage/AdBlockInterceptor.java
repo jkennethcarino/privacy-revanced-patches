@@ -1,4 +1,4 @@
-package dev.jkcarino.extension.reddit;
+package dev.jkcarino.extension.reddit.frontpage;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
