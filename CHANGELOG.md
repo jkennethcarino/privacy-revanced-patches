@@ -1,3 +1,10 @@
+# [4.4.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.1...v4.4.0-dev.2) (2025-12-17)
+
+
+### Bug Fixes
+
+* **Reddit:** Fix Reddit extension conflict with ReVanced's extension ([b770252](https://github.com/jkennethcarino/privacy-revanced-patches/commit/b77025246533bc926c7c4273e2ca5fb90cf9d395))
+
 # [4.4.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.3.0...v4.4.0-dev.1) (2025-12-17)
 
 
