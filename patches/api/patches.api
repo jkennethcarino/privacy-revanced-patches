@@ -102,6 +102,10 @@ public final class dev/jkcarino/revanced/patches/reddit/ad/RemoveAdsAndTelemetry
 	public static final fun getRemoveAdsAndTelemetryPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/reddit/layout/actions/score/HideScoresPatchKt {
+	public static final fun getHideScoresPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/reddit/layout/screenshotbanner/DisableScreenshotBannerPatchKt {
 	public static final fun getDisableScreenshotBannerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
