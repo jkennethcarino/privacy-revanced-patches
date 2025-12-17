@@ -1,3 +1,10 @@
+# [4.4.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.3.0...v4.4.0-dev.1) (2025-12-17)
+
+
+### Features
+
+* **Reddit:** Add `Hide upvote scores` patch ([b1bf96c](https://github.com/jkennethcarino/privacy-revanced-patches/commit/b1bf96c89a687b9ff6e69e73ce000744bf620971))
+
 # [4.3.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0...v4.3.0) (2025-12-11)
 
 
