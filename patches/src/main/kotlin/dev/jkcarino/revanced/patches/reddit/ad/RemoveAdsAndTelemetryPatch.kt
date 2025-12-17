@@ -12,8 +12,8 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
 
 @Suppress("unused")
 val removeAdsAndTelemetryPatch = bytecodePatch(
-    name = "Remove ads, annoyances, and telemetry",
-    description = "Removes ads, annoyances, and telemetry from Home, Popular, Watch, Latest, All, " +
+    name = "Remove ads and telemetry",
+    description = "Removes ads and telemetry from Home, Popular, Watch, Latest, All, " +
         "Custom feeds, Search, and Subreddits, including comments.",
     use = true
 ) {
