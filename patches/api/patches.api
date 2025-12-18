@@ -78,6 +78,10 @@ public final class dev/jkcarino/revanced/patches/google/gboard/detection/signatu
 	public static final fun getBypassSignaturePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/google/gboard/featureflags/ToggleFeatureFlagsPatchKt {
+	public static final fun getToggleFeatureFlagsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/google/gboard/fixes/ApplyWorkaroundPatchKt {
 	public static final fun getApplyWorkaround ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
