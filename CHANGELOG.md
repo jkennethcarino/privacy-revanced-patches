@@ -1,3 +1,10 @@
+# [4.4.0-dev.5](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.4...v4.4.0-dev.5) (2025-12-18)
+
+
+### Features
+
+* **Gboard:** Add `Toggle feature flags` patch ([879b324](https://github.com/jkennethcarino/privacy-revanced-patches/commit/879b324766dcb57395e615f23837f823169d74b5))
+
 # [4.4.0-dev.4](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.3...v4.4.0-dev.4) (2025-12-18)
 
 
