@@ -1,3 +1,38 @@
+# [4.4.0-dev.5](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.4...v4.4.0-dev.5) (2025-12-18)
+
+
+### Features
+
+* **Gboard:** Add `Toggle feature flags` patch ([879b324](https://github.com/jkennethcarino/privacy-revanced-patches/commit/879b324766dcb57395e615f23837f823169d74b5))
+
+# [4.4.0-dev.4](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.3...v4.4.0-dev.4) (2025-12-18)
+
+
+### Features
+
+* **Reddit:** Add `Hide share count` patch ([c8cdbaa](https://github.com/jkennethcarino/privacy-revanced-patches/commit/c8cdbaa3fa8c97722641727a97bb503897591366))
+
+# [4.4.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.2...v4.4.0-dev.3) (2025-12-17)
+
+
+### Bug Fixes
+
+* **Reddit - Remove ads and telemetry:** Respect user's recommendation preferences ([3a820ee](https://github.com/jkennethcarino/privacy-revanced-patches/commit/3a820eef43a7d318ec29ec3cdea36c8ecbac4df1))
+
+# [4.4.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.1...v4.4.0-dev.2) (2025-12-17)
+
+
+### Bug Fixes
+
+* **Reddit:** Fix Reddit extension conflict with ReVanced's extension ([b770252](https://github.com/jkennethcarino/privacy-revanced-patches/commit/b77025246533bc926c7c4273e2ca5fb90cf9d395))
+
+# [4.4.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.3.0...v4.4.0-dev.1) (2025-12-17)
+
+
+### Features
+
+* **Reddit:** Add `Hide upvote scores` patch ([b1bf96c](https://github.com/jkennethcarino/privacy-revanced-patches/commit/b1bf96c89a687b9ff6e69e73ce000744bf620971))
+
 # [4.3.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.2.0...v4.3.0) (2025-12-11)
 
 

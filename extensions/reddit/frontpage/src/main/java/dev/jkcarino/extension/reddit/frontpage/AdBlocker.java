@@ -1,4 +1,4 @@
-package dev.jkcarino.extension.reddit;
+package dev.jkcarino.extension.reddit.frontpage;
 
 import okhttp3.Request;
 import org.json.JSONArray;
@@ -20,9 +20,14 @@ public final class AdBlocker {
     private static final String AD_PAYLOAD = "adPayload";
     private static final String GROUP_RECOMMENDATION_CONTEXT = "groupRecommendationContext";
     private static final String GROUP_RECOMMENDATION_TYPE_ID = "typeIdentifier";
+    private static final String CELL_TYPE_NAME = "__typename";
+    private static final String CELL_RECOMMENDATION_CONTEXT_CALL = "RichtextRecommendationContextCell";
+
+    private static final String TYPE_ID_GAMES = "dev_platform";
 
     private static final String SEARCH_RECOMMENDATION = "recommendation";
     private static final String SEARCH_TRENDING_QUERIES = "trendingQueries";
+    private static final String SEARCH_IS_PROMOTED = "isPromoted";
 
     private static final Set<String> feeds = Set.of(
         "homeV3",
@@ -31,6 +36,8 @@ public final class AdBlocker {
         "customFeedV3",
         "subredditV3"
     );
+
+    private static final Set<String> nodeCells = Set.of("cells", "crosspostCells");
 
     private static final HashSet<String> blockedHosts = new HashSet<>(
         Set.of(
@@ -56,19 +63,19 @@ public final class AdBlocker {
         return node != null && node.has(AD_PAYLOAD) && !node.isNull(AD_PAYLOAD);
     }
 
-    private static boolean isRecommendationAd(JSONObject edge) throws JSONException {
+    private static boolean isGameRecommendation(JSONObject edge) throws JSONException {
         if (edge.has(NODE)) {
             JSONObject node = edge.getJSONObject(NODE);
             JSONObject groupRecommendationContext = node.optJSONObject(GROUP_RECOMMENDATION_CONTEXT);
 
-            boolean isRecommendationTypeUnknown = false;
+            boolean isGameRecommendation = false;
 
             if (groupRecommendationContext != null) {
                 String typeIdentifier = groupRecommendationContext.optString(GROUP_RECOMMENDATION_TYPE_ID);
-                isRecommendationTypeUnknown = typeIdentifier.equalsIgnoreCase("unknown");
+                isGameRecommendation = typeIdentifier.equalsIgnoreCase(TYPE_ID_GAMES);
             }
 
-            return groupRecommendationContext != null && !isRecommendationTypeUnknown;
+            return groupRecommendationContext != null && isGameRecommendation;
         }
         return false;
     }
@@ -90,19 +97,48 @@ public final class AdBlocker {
                         JSONArray edges = elements.getJSONArray(EDGES);
                         JSONArray filteredEdges = new JSONArray();
 
-                        for (int i = 0; i < edges.length(); i++) {
-                            JSONObject edge = edges.getJSONObject(i);
+                        for (int edge = 0; edge < edges.length(); edge++) {
+                            JSONObject currentEdge = edges.getJSONObject(edge);
 
-                            if (!isAd(edge) && !isRecommendationAd(edge)) {
-                                filteredEdges.put(edge);
+                            if (!isAd(currentEdge) && !isGameRecommendation(currentEdge)) {
+                                removeRecommendationContextCell(currentEdge);
+                                filteredEdges.put(currentEdge);
                             }
                         }
-
                         elements.put(EDGES, filteredEdges);
                     }
                 }
-
                 break;
+            }
+        }
+    }
+
+    private static void removeRecommendationContextCell(JSONObject edge) throws JSONException {
+        if (edge.has(NODE)) {
+            JSONObject node = edge.getJSONObject(NODE);
+            JSONObject groupRecommendationContext = node.optJSONObject(GROUP_RECOMMENDATION_CONTEXT);
+
+            if (groupRecommendationContext != null) {
+                node.put(GROUP_RECOMMENDATION_CONTEXT, JSONObject.NULL);
+
+                for (String nodeCell : nodeCells) {
+                    JSONArray cells = node.getJSONArray(nodeCell);
+                    JSONArray filteredCells = new JSONArray();
+
+                    for (int cell = 0; cell < cells.length(); cell++) {
+                        JSONObject currentCell = cells.getJSONObject(cell);
+
+                        boolean isRecommendationContextCall = currentCell
+                            .optString(CELL_TYPE_NAME)
+                            .equals(CELL_RECOMMENDATION_CONTEXT_CALL);
+
+                        if (!isRecommendationContextCall) {
+                            filteredCells.put(currentCell);
+                        }
+                    }
+
+                    node.put(nodeCell, filteredCells);
+                }
             }
         }
     }
@@ -120,7 +156,7 @@ public final class AdBlocker {
 
                 if (edge.has(NODE)) {
                     JSONObject node = edge.getJSONObject(NODE);
-                    boolean isPromoted = node.optBoolean("isPromoted", false);
+                    boolean isPromoted = node.optBoolean(SEARCH_IS_PROMOTED, false);
 
                     if (!isPromoted) {
                         filteredEdges.put(edge);

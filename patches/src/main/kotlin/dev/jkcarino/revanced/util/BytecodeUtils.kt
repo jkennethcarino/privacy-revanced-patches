@@ -58,10 +58,16 @@ fun MutableMethod.returnEarly(bool: Boolean = false) {
                 return-object v0
             """
         }
-        'I', 'Z' -> {
+        'F', 'I', 'Z' -> {
             """
                 const/4 v0, $const
                 return v0
+            """
+        }
+        'J' -> {
+            """
+                const-wide/16 v0, $const
+                return-wide v0
             """
         }
         'V' -> "return-void"
