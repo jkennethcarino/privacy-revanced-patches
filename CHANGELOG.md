@@ -1,3 +1,10 @@
+# [4.4.0-dev.4](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.3...v4.4.0-dev.4) (2025-12-18)
+
+
+### Features
+
+* **Reddit:** Add `Hide share count` patch ([c8cdbaa](https://github.com/jkennethcarino/privacy-revanced-patches/commit/c8cdbaa3fa8c97722641727a97bb503897591366))
+
 # [4.4.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0-dev.2...v4.4.0-dev.3) (2025-12-17)
 
 
