@@ -106,12 +106,20 @@ public final class dev/jkcarino/revanced/patches/reddit/layout/actions/score/Hid
 	public static final fun getHideScoresPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/reddit/layout/actions/share/HideShareCountPatchKt {
+	public static final fun getHideShareCountPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/reddit/layout/screenshotbanner/DisableScreenshotBannerPatchKt {
 	public static final fun getDisableScreenshotBannerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
 public final class dev/jkcarino/revanced/patches/reddit/misc/sharing/url/SanitizeShareLinkPatchKt {
 	public static final fun getSanitizeShareLinkPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/reddit/shared/util/BytecodeUtilsKt {
+	public static final fun updateClassField (Lapp/revanced/patcher/patch/BytecodePatchContext;Lcom/android/tools/smali/dexlib2/iface/ClassDef;Lcom/android/tools/smali/dexlib2/iface/reference/FieldReference;Ljava/lang/Object;)V
 }
 
 public final class dev/jkcarino/revanced/patches/shared/resource/ManifestKt {

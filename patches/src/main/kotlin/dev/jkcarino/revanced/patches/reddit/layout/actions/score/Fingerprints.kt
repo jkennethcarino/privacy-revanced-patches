@@ -1,20 +1,6 @@
 package dev.jkcarino.revanced.patches.reddit.layout.actions.score
 
 import app.revanced.patcher.fingerprint
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-
-internal val constructorFingerprint = fingerprint {
-    accessFlags(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
-    opcodes(
-        Opcode.INVOKE_DIRECT,
-        Opcode.IPUT_OBJECT,
-        Opcode.IPUT_BOOLEAN,
-    )
-    custom { method, _ ->
-        method.name == "<init>"
-    }
-}
 
 internal val actionCellFragmentToStringFingerprint = fingerprint {
     returns("Ljava/lang/String;")
@@ -23,12 +9,6 @@ internal val actionCellFragmentToStringFingerprint = fingerprint {
         ", isScoreHidden=",
         "ActionCellFragment(id=",
     )
-}
-
-internal val linkToStringFingerprint = fingerprint {
-    returns("Ljava/lang/String;")
-    parameters()
-    strings("Link(id=")
 }
 
 internal val linkScoreFingerprints =
