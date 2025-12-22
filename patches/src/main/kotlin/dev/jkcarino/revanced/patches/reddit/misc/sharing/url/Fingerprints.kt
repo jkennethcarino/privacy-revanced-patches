@@ -12,7 +12,7 @@ internal val createShareLinkFingerprint = fingerprint {
     strings(
         "url",
         "getQueryParameterNames(...)",
-        "toString(...)"
+        "toString(...)",
     )
 }
 

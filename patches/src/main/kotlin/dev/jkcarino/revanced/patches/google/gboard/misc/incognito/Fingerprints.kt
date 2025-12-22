@@ -17,13 +17,13 @@ private val imeNoPersonalizedLearningOpCodes = listOf(
     Opcode.RETURN,
     Opcode.CONST_4,
     Opcode.RETURN,
-).toTypedArray()
+)
 
 internal val isIncognitoModeFingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
     returns("Z")
     parameters("Landroid/view/inputmethod/EditorInfo;")
-    opcodes(*imeNoPersonalizedLearningOpCodes)
+    opcodes(*imeNoPersonalizedLearningOpCodes.toTypedArray())
     literal { IME_FLAG_NO_PERSONALIZED_LEARNING }
 }
 
@@ -34,7 +34,7 @@ internal val isIncognitoModeV2Fingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.FINAL)
     returns("Z")
     parameters()
-    opcodes(*imeNoPersonalizedLearningOpCodes)
+    opcodes(*imeNoPersonalizedLearningOpCodes.toTypedArray())
     literal { IME_FLAG_NO_PERSONALIZED_LEARNING }
 }
 

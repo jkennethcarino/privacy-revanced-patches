@@ -8,7 +8,7 @@ internal val initializeFingerprint = fingerprint {
     returns("V")
     parameters("Landroid/content/Context;", "L", "L", "Z")
     custom { method, _ ->
-        method.definingClass == "Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFactory;"
-            && method.name == "initialize"
+        method.name == "initialize"
+            && method.definingClass == "Lcom/facebook/ads/internal/dynamicloading/DynamicLoaderFactory;"
     }
 }

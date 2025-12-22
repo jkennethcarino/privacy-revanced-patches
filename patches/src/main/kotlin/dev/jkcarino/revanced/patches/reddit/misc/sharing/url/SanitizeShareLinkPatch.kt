@@ -18,11 +18,11 @@ val sanitizeShareLinkPatch = bytecodePatch(
         )
 
         val generateShareLinkMethod = generateShareLinkFingerprint.method
-        val getShortUrl = navigate(generateShareLinkMethod)
+        val getShortUrlMethod = navigate(generateShareLinkMethod)
             .to(generateShareLinkFingerprint.patternMatch!!.endIndex - 1)
             .stop()
 
-        getShortUrl.addInstruction(
+        getShortUrlMethod.addInstruction(
             index = 0,
             smaliInstructions = "return-object p1"
         )

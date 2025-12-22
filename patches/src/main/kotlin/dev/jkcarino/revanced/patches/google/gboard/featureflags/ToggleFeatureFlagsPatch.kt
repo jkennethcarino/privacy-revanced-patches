@@ -12,7 +12,7 @@ import java.util.logging.Logger
 @Suppress("unused")
 val toggleFeatureFlagsPatch = bytecodePatch(
     name = "Toggle feature flags",
-    description = "Toggles Gboard feature flags to enable or disable experimental or hidden features",
+    description = "Toggles Gboard feature flags to enable or disable experimental or hidden features.",
     use = false,
 ) {
     dependsOn(bypassSignaturePatch)
