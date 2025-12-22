@@ -1,3 +1,10 @@
+## [4.4.1-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0...v4.4.1-dev.1) (2025-12-22)
+
+
+### Bug Fixes
+
+* **Reddit:** Support the latest version ([5a47382](https://github.com/jkennethcarino/privacy-revanced-patches/commit/5a47382ca7b07cd76ac73138c034bef1accd7345))
+
 # [4.4.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.3.0...v4.4.0) (2025-12-18)
 
 
