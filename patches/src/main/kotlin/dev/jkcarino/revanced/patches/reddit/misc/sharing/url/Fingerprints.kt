@@ -21,7 +21,7 @@ internal val generateShareLinkFingerprint = fingerprint {
     opcodes(
         Opcode.MOVE_OBJECT,
         Opcode.IGET_OBJECT,
-        Opcode.CHECK_CAST,
+        null,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
     )
