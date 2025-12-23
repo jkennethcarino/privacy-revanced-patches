@@ -7,8 +7,8 @@ internal val unityAdsIsInitializedFingerprint = fingerprint {
     accessFlags(AccessFlags.PUBLIC, AccessFlags.STATIC)
     returns("V")
     custom { method, _ ->
-        method.definingClass == "Lcom/unity3d/ads/UnityAds;"
-            && method.name == "isInitialized"
+        method.name == "isInitialized"
+            && method.definingClass == "Lcom/unity3d/ads/UnityAds;"
     }
 }
 

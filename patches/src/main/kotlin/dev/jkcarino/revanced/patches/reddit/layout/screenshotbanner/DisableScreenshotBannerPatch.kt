@@ -15,7 +15,7 @@ val disableScreenshotBannerPatch = bytecodePatch(
     compatibleWith("com.reddit.frontpage")
 
     execute {
-        onScreenCapturedFingerprint.method.returnEarly()
+        onScreenCapturedFingerprint.methodOrNull?.returnEarly()
 
         listOf(
             screenshotBannerInvokeSuspendFingerprint,

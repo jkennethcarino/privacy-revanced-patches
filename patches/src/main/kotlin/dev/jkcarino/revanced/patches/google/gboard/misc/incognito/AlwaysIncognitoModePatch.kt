@@ -1,12 +1,12 @@
 package dev.jkcarino.revanced.patches.google.gboard.misc.incognito
 
-import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 import dev.jkcarino.revanced.patches.google.gboard.detection.signature.bypassSignaturePatch
+import dev.jkcarino.revanced.util.returnEarly
 
 @Suppress("unused")
 val alwaysIncognitoModePatch = bytecodePatch(
@@ -41,13 +41,7 @@ val alwaysIncognitoModePatch = bytecodePatch(
                 )
             }
             else -> {
-                method.addInstructions(
-                    index = 0,
-                    smaliInstructions = """
-                        const/4 v0, 0x1
-                        return v0
-                    """
-                )
+                method.returnEarly(true)
             }
         }
     }
