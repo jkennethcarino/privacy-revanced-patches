@@ -1,3 +1,10 @@
+# [4.5.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.1-dev.1...v4.5.0-dev.1) (2025-12-23)
+
+
+### Features
+
+* **Gboard:** Add `Enable clipboard in incognito` patch ([03f6c1f](https://github.com/jkennethcarino/privacy-revanced-patches/commit/03f6c1f11fe8ea6404c9d396402fb9964f3fa360))
+
 ## [4.4.1-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0...v4.4.1-dev.1) (2025-12-22)
 
 
