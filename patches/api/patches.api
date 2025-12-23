@@ -86,6 +86,10 @@ public final class dev/jkcarino/revanced/patches/google/gboard/fixes/ApplyWorkar
 	public static final fun getApplyWorkaround ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/google/gboard/incognito/clipboard/EnableClipboardPatchKt {
+	public static final fun getEnableClipboardPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/google/gboard/misc/incognito/AlwaysIncognitoModePatchKt {
 	public static final fun getAlwaysIncognitoModePatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
