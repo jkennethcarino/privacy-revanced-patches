@@ -1,3 +1,10 @@
+# [4.5.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.5.0-dev.1...v4.5.0-dev.2) (2025-12-30)
+
+
+### Features
+
+* **Reddit:** Add `Open external links directly` patch ([b47df9c](https://github.com/jkennethcarino/privacy-revanced-patches/commit/b47df9c48fb9a13b89265c09ae5c1444b7d997a6))
+
 # [4.5.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.1-dev.1...v4.5.0-dev.1) (2025-12-23)
 
 
