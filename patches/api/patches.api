@@ -122,6 +122,10 @@ public final class dev/jkcarino/revanced/patches/reddit/layout/screenshotbanner/
 	public static final fun getDisableScreenshotBannerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/reddit/misc/outboundlink/OpenLinksDirectlyPatchKt {
+	public static final fun getOpenLinksDirectlyPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/reddit/misc/sharing/url/SanitizeShareLinkPatchKt {
 	public static final fun getSanitizeShareLinkPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
