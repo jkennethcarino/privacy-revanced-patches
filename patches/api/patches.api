@@ -84,6 +84,7 @@ public final class dev/jkcarino/revanced/patches/google/gboard/featureflags/Togg
 
 public final class dev/jkcarino/revanced/patches/google/gboard/fixes/ApplyWorkaroundPatchKt {
 	public static final fun getApplyWorkaround ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getApplyWorkaroundPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
 
 public final class dev/jkcarino/revanced/patches/google/gboard/incognito/clipboard/EnableClipboardPatchKt {

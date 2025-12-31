@@ -3,12 +3,9 @@ package dev.jkcarino.revanced.patches.google.gboard.fixes
 import app.revanced.patcher.patch.resourcePatch
 import dev.jkcarino.revanced.util.get
 
-@Suppress("unused")
-val applyWorkaround = resourcePatch(
-    name = "Apply workaround",
+val applyWorkaroundPatch = resourcePatch(
     description = "Applies workaround for patcher to fix missing or unsupported resources. " +
         "This only applies to versions 14.1.x.x and later.",
-    use = true,
 ) {
     compatibleWith("com.google.android.inputmethod.latin")
 
@@ -26,4 +23,13 @@ val applyWorkaround = resourcePatch(
             inputMethod.removeAttribute("android:supportsConnectionlessStylusHandwriting")
         }
     }
+}
+
+@Deprecated(
+    message = "This patch was renamed to applyWorkaroundPatch.",
+    replaceWith = ReplaceWith("applyWorkaroundPatch"),
+)
+@Suppress("unused")
+val applyWorkaround = resourcePatch {
+    dependsOn(applyWorkaroundPatch)
 }
