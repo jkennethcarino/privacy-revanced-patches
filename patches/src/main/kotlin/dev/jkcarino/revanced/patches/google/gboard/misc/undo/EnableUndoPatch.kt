@@ -1,6 +1,6 @@
 package dev.jkcarino.revanced.patches.google.gboard.misc.undo
 
-import app.revanced.patcher.extensions.InstructionExtensions.replaceInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import dev.jkcarino.revanced.patches.google.gboard.detection.signature.bypassSignaturePatch
 
@@ -18,9 +18,9 @@ val enableUndoPatch = bytecodePatch(
         undoAccessPointFingerprint.method.apply {
             val isEnabledIndex = undoAccessPointFingerprint.patternMatch!!.endIndex
 
-            replaceInstructions(
+            replaceInstruction(
                 index = isEnabledIndex,
-                smaliInstructions = "const/4 v1, 0x1"
+                smaliInstruction = "const/4 v1, 0x1"
             )
         }
     }

@@ -10,12 +10,12 @@ import dev.jkcarino.revanced.util.returnEarly
 val disableScreenshotBannerPatch = bytecodePatch(
     name = "Disable screenshot banner",
     description = "Disables the banner that shows up after taking a screenshot.",
-    use = true
+    use = true,
 ) {
     compatibleWith("com.reddit.frontpage")
 
     execute {
-        onScreenCapturedFingerprint.method.returnEarly()
+        onScreenCapturedFingerprint.methodOrNull?.returnEarly()
 
         listOf(
             screenshotBannerInvokeSuspendFingerprint,

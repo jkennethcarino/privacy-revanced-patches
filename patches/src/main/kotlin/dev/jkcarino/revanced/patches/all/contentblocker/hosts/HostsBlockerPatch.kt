@@ -19,7 +19,7 @@ import java.util.logging.Logger
 val hostsBlockerPatch = bytecodePatch(
     name = "Block ads, trackers, and analytics",
     description = "Blocks ads, trackers, analytics, and unwanted content in apps and games using a hosts file.",
-    use = false
+    use = false,
 ) {
     val logger = Logger.getLogger(this::class.java.name)
 

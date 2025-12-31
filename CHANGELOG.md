@@ -1,3 +1,31 @@
+# [4.5.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.5.0-dev.2...v4.5.0-dev.3) (2025-12-31)
+
+
+### Features
+
+* **Reddit:** Add `Hide community highlights` patch ([bd093d8](https://github.com/jkennethcarino/privacy-revanced-patches/commit/bd093d840efc1fbf51a552d6a2b361786ef08a29))
+
+# [4.5.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.5.0-dev.1...v4.5.0-dev.2) (2025-12-30)
+
+
+### Features
+
+* **Reddit:** Add `Open external links directly` patch ([b47df9c](https://github.com/jkennethcarino/privacy-revanced-patches/commit/b47df9c48fb9a13b89265c09ae5c1444b7d997a6))
+
+# [4.5.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.1-dev.1...v4.5.0-dev.1) (2025-12-23)
+
+
+### Features
+
+* **Gboard:** Add `Enable clipboard in incognito` patch ([03f6c1f](https://github.com/jkennethcarino/privacy-revanced-patches/commit/03f6c1f11fe8ea6404c9d396402fb9964f3fa360))
+
+## [4.4.1-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0...v4.4.1-dev.1) (2025-12-22)
+
+
+### Bug Fixes
+
+* **Reddit:** Support the latest version ([5a47382](https://github.com/jkennethcarino/privacy-revanced-patches/commit/5a47382ca7b07cd76ac73138c034bef1accd7345))
+
 # [4.4.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.3.0...v4.4.0) (2025-12-18)
 
 

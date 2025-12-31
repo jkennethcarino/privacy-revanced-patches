@@ -1,7 +1,7 @@
 package dev.jkcarino.revanced.patches.google.gboard.featureflags
 
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
-import app.revanced.patcher.extensions.InstructionExtensions.replaceInstructions
+import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patcher.patch.booleanOption
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.stringsOption
@@ -12,7 +12,7 @@ import java.util.logging.Logger
 @Suppress("unused")
 val toggleFeatureFlagsPatch = bytecodePatch(
     name = "Toggle feature flags",
-    description = "Toggles Gboard feature flags to enable or disable experimental or hidden features",
+    description = "Toggles Gboard feature flags to enable or disable experimental or hidden features.",
     use = false,
 ) {
     dependsOn(bypassSignaturePatch)
@@ -42,7 +42,6 @@ val toggleFeatureFlagsPatch = bytecodePatch(
     execute {
         featureFlags!!.forEach { flag ->
             val fingerprint = featureFlagFingerprint(flag.trim())
-            val state = if (enableFlags!!) "on" else "off"
 
             runCatching {
                 fingerprint.method.apply {
@@ -52,12 +51,13 @@ val toggleFeatureFlagsPatch = bytecodePatch(
                     val isEnabledRegister = isEnabledInstruction.registerA
                     val enabled = if (enableFlags!!) "0x1" else "0x0"
 
-                    replaceInstructions(
+                    replaceInstruction(
                         index = isEnabledIndex,
-                        smaliInstructions = "const/4 v$isEnabledRegister, $enabled"
+                        smaliInstruction = "const/4 v$isEnabledRegister, $enabled"
                     )
                 }
             }.onSuccess {
+                val state = if (enableFlags!!) "on" else "off"
                 logger.info("[Found] \"$flag\" toggled $state.")
             }.onFailure {
                 logger.info("[Skipped] \"$flag\" was not found. No changes applied.")

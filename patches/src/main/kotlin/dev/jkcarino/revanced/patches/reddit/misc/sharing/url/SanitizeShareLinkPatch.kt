@@ -7,7 +7,7 @@ import app.revanced.patcher.patch.bytecodePatch
 val sanitizeShareLinkPatch = bytecodePatch(
     name = "Sanitize share links",
     description = "Unshortens and removes the tracking query parameters from shared links.",
-    use = true
+    use = true,
 ) {
     compatibleWith("com.reddit.frontpage")
 
@@ -18,11 +18,11 @@ val sanitizeShareLinkPatch = bytecodePatch(
         )
 
         val generateShareLinkMethod = generateShareLinkFingerprint.method
-        val getShortUrl = navigate(generateShareLinkMethod)
+        val getShortUrlMethod = navigate(generateShareLinkMethod)
             .to(generateShareLinkFingerprint.patternMatch!!.endIndex - 1)
             .stop()
 
-        getShortUrl.addInstruction(
+        getShortUrlMethod.addInstruction(
             index = 0,
             smaliInstructions = "return-object p1"
         )

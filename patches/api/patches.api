@@ -84,6 +84,11 @@ public final class dev/jkcarino/revanced/patches/google/gboard/featureflags/Togg
 
 public final class dev/jkcarino/revanced/patches/google/gboard/fixes/ApplyWorkaroundPatchKt {
 	public static final fun getApplyWorkaround ()Lapp/revanced/patcher/patch/ResourcePatch;
+	public static final fun getApplyWorkaroundPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/google/gboard/incognito/clipboard/EnableClipboardPatchKt {
+	public static final fun getEnableClipboardPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
 public final class dev/jkcarino/revanced/patches/google/gboard/misc/incognito/AlwaysIncognitoModePatchKt {
@@ -114,8 +119,16 @@ public final class dev/jkcarino/revanced/patches/reddit/layout/actions/share/Hid
 	public static final fun getHideShareCountPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/reddit/layout/communityhighlights/HideCommunityHighlightsPatchKt {
+	public static final fun getHideCommunityHighlightsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/reddit/layout/screenshotbanner/DisableScreenshotBannerPatchKt {
 	public static final fun getDisableScreenshotBannerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/reddit/misc/outboundlink/OpenLinksDirectlyPatchKt {
+	public static final fun getOpenLinksDirectlyPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
 public final class dev/jkcarino/revanced/patches/reddit/misc/sharing/url/SanitizeShareLinkPatchKt {
