@@ -118,6 +118,10 @@ public final class dev/jkcarino/revanced/patches/reddit/layout/actions/share/Hid
 	public static final fun getHideShareCountPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/reddit/layout/communityhighlights/HideCommunityHighlightsPatchKt {
+	public static final fun getHideCommunityHighlightsPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/reddit/layout/screenshotbanner/DisableScreenshotBannerPatchKt {
 	public static final fun getDisableScreenshotBannerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
