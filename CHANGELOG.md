@@ -1,3 +1,10 @@
+# [4.5.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.5.0-dev.2...v4.5.0-dev.3) (2025-12-31)
+
+
+### Features
+
+* **Reddit:** Add `Hide community highlights` patch ([bd093d8](https://github.com/jkennethcarino/privacy-revanced-patches/commit/bd093d840efc1fbf51a552d6a2b361786ef08a29))
+
 # [4.5.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.5.0-dev.1...v4.5.0-dev.2) (2025-12-30)
 
 
