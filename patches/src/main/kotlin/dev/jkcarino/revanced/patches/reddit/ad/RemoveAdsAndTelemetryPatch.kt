@@ -4,7 +4,7 @@ import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patcher.patch.bytecodePatch
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction11x
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import dev.jkcarino.revanced.util.proxy
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -15,7 +15,7 @@ val removeAdsAndTelemetryPatch = bytecodePatch(
     name = "Remove ads and telemetry",
     description = "Removes ads and telemetry from Home, Popular, Watch, Latest, All, " +
         "Custom feeds, Search, and Subreddits, including comments.",
-    use = true
+    use = true,
 ) {
     extendWith("extensions/reddit/frontpage.rve")
 
@@ -24,7 +24,7 @@ val removeAdsAndTelemetryPatch = bytecodePatch(
     execute {
         okHttpConstructorFingerprint.method.apply {
             val interceptorsIndex = okHttpConstructorFingerprint.patternMatch!!.endIndex
-            val interceptorsInstruction = getInstruction<BuilderInstruction11x>(interceptorsIndex)
+            val interceptorsInstruction = getInstruction<OneRegisterInstruction>(interceptorsIndex)
             val interceptorsRegister = interceptorsInstruction.registerA
             val adBlockInterceptorRegister = interceptorsRegister + 1
 
@@ -41,7 +41,8 @@ val removeAdsAndTelemetryPatch = bytecodePatch(
         val adBlockInterceptorClass = proxy(EXTENSION_CLASS_DESCRIPTOR).immutableClass
 
         interceptFingerprint.match(adBlockInterceptorClass).method.apply {
-            val realBufferedSourceClassDef = realBufferedSourceCommonIndexOfFingerprint.originalClassDef
+            val realBufferedSourceClassDef =
+                realBufferedSourceCommonIndexOfFingerprint.originalClassDef
             val bufferedSource = realBufferedSourceClassDef.interfaces.first()
             val bufferClassDef = bufferCommonReadAndWriteUnsafeFingerprint.originalClassDef
             val buffer = bufferClassDef.type

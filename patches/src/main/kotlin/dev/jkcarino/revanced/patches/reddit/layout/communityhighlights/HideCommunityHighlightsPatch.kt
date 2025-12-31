@@ -15,7 +15,8 @@ import dev.jkcarino.revanced.util.getReference
 @Suppress("unused")
 val hideCommunityHighlightsPatch = bytecodePatch(
     name = "Hide community highlights",
-    description = "Hides the community highlights section."
+    description = "Hides the community highlights section.",
+    use = false,
 ) {
     compatibleWith("com.reddit.frontpage")
 
