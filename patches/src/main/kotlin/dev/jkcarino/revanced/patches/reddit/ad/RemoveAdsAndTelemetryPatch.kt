@@ -5,6 +5,7 @@ import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import dev.jkcarino.revanced.patches.reddit.misc.firebase.spoofCertificateHashPatch
 import dev.jkcarino.revanced.util.proxy
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -18,6 +19,8 @@ val removeAdsAndTelemetryPatch = bytecodePatch(
     use = true,
 ) {
     extendWith("extensions/reddit/frontpage.rve")
+
+    dependsOn(spoofCertificateHashPatch)
 
     compatibleWith("com.reddit.frontpage")
 

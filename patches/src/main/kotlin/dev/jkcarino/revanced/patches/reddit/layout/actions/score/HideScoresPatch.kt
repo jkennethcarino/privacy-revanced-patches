@@ -6,6 +6,7 @@ import app.revanced.patcher.patch.booleanOption
 import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import dev.jkcarino.revanced.patches.reddit.misc.firebase.spoofCertificateHashPatch
 import dev.jkcarino.revanced.patches.reddit.shared.linkToStringFingerprint
 import dev.jkcarino.revanced.patches.reddit.shared.util.updateClassField
 import dev.jkcarino.revanced.util.filterMethods
@@ -21,6 +22,8 @@ val hideScoresPatch = bytecodePatch(
     description = "Hides the scores on Reddit posts and comments.",
     use = false,
 ) {
+    dependsOn(spoofCertificateHashPatch)
+
     compatibleWith("com.reddit.frontpage")
 
     val hidePostScores by booleanOption(

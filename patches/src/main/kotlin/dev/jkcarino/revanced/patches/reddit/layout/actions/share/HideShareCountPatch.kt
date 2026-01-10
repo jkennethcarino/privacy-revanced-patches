@@ -4,6 +4,7 @@ import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.patch.bytecodePatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import dev.jkcarino.revanced.patches.reddit.misc.firebase.spoofCertificateHashPatch
 import dev.jkcarino.revanced.patches.reddit.shared.linkToStringFingerprint
 import dev.jkcarino.revanced.patches.reddit.shared.util.updateClassField
 import dev.jkcarino.revanced.util.getReference
@@ -15,6 +16,8 @@ val hideShareCountPatch = bytecodePatch(
     description = "Hides the share count on Reddit posts.",
     use = false,
 ) {
+    dependsOn(spoofCertificateHashPatch)
+
     compatibleWith("com.reddit.frontpage")
 
     execute {

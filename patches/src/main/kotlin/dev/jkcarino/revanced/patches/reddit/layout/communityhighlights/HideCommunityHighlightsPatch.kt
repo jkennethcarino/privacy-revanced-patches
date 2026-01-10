@@ -9,6 +9,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import dev.jkcarino.revanced.patches.reddit.misc.firebase.spoofCertificateHashPatch
 import dev.jkcarino.revanced.patches.reddit.shared.util.updateClassField
 import dev.jkcarino.revanced.util.getReference
 
@@ -18,6 +19,8 @@ val hideCommunityHighlightsPatch = bytecodePatch(
     description = "Hides the community highlights section.",
     use = false,
 ) {
+    dependsOn(spoofCertificateHashPatch)
+
     compatibleWith("com.reddit.frontpage")
 
     execute {
