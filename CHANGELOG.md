@@ -1,3 +1,10 @@
+# [4.6.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.6.0-dev.1...v4.6.0-dev.2) (2026-01-10)
+
+
+### Bug Fixes
+
+* **Reddit:** Fix push notifications not working ([6bc93dc](https://github.com/jkennethcarino/privacy-revanced-patches/commit/6bc93dc36d88786e99a6aca466e7a0b9bf31f832))
+
 # [4.6.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.5.0...v4.6.0-dev.1) (2026-01-10)
 
 
