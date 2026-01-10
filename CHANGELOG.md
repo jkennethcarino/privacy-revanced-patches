@@ -1,3 +1,10 @@
+# [4.6.0-dev.1](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.5.0...v4.6.0-dev.1) (2026-01-10)
+
+
+### Features
+
+* **Universal:** Add `Spoof Firebase certificate hash` patch ([#58](https://github.com/jkennethcarino/privacy-revanced-patches/issues/58)) ([decf860](https://github.com/jkennethcarino/privacy-revanced-patches/commit/decf86007638553d2e7a35c3fa85bc6060fcea58))
+
 # [4.5.0](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.4.0...v4.5.0) (2025-12-31)
 
 
