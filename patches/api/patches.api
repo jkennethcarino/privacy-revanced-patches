@@ -50,6 +50,14 @@ public final class dev/jkcarino/revanced/patches/all/firebase/analytics/RemoveGo
 	public static final fun getRemoveGoogleAnalyticsPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/all/firebase/installations/BaseSpoofAndroidCertPatchKt {
+	public static final fun baseSpoofAndroidCertPatch (Lkotlin/jvm/functions/Function0;)Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/all/firebase/installations/SpoofAndroidCertPatchKt {
+	public static final fun getSpoofAndroidCertPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/all/firebase/performance/DeactivateFirebasePerfPatchKt {
 	public static final fun getDeactivateFirebasePerfPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
