@@ -8,7 +8,7 @@ internal val staticConstructorFingerprint = fingerprint {
     accessFlags(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR)
     strings(
         "isSearchBarAskButtonHoldoutEnabled",
-        "isSearchBarAskButtonHoldoutEnabled()Z"
+        "isSearchBarAskButtonHoldoutEnabled()Z",
     )
 }
 
