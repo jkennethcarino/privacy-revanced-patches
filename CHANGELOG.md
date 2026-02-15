@@ -1,3 +1,10 @@
+# [4.6.0-dev.4](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.6.0-dev.3...v4.6.0-dev.4) (2026-02-15)
+
+
+### Features
+
+* **Reddit:** Add `Hide Ask button from search bar` patch ([3603bf8](https://github.com/jkennethcarino/privacy-revanced-patches/commit/3603bf8bd1553e6db2d8e097c00c7c28c23beff3))
+
 # [4.6.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.6.0-dev.2...v4.6.0-dev.3) (2026-02-15)
 
 
