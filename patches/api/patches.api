@@ -50,6 +50,14 @@ public final class dev/jkcarino/revanced/patches/all/firebase/analytics/RemoveGo
 	public static final fun getRemoveGoogleAnalyticsPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/all/firebase/installations/BaseSpoofAndroidCertPatchKt {
+	public static final fun baseSpoofAndroidCertPatch (Lkotlin/jvm/functions/Function0;)Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/all/firebase/installations/SpoofAndroidCertPatchKt {
+	public static final fun getSpoofAndroidCertPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/all/firebase/performance/DeactivateFirebasePerfPatchKt {
 	public static final fun getDeactivateFirebasePerfPatch ()Lapp/revanced/patcher/patch/ResourcePatch;
 }
@@ -125,6 +133,18 @@ public final class dev/jkcarino/revanced/patches/reddit/layout/communityhighligh
 
 public final class dev/jkcarino/revanced/patches/reddit/layout/screenshotbanner/DisableScreenshotBannerPatchKt {
 	public static final fun getDisableScreenshotBannerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/reddit/layout/search/ask/HideSearchAskButtonPatchKt {
+	public static final fun getHideSearchAskButtonPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/reddit/layout/search/searchbar/HideProminentSearchBarPatchKt {
+	public static final fun getHideProminentSearchBarPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
+public final class dev/jkcarino/revanced/patches/reddit/misc/firebase/SpoofAndroidCertPatchKt {
+	public static final fun getSpoofCertificateHashPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
 public final class dev/jkcarino/revanced/patches/reddit/misc/outboundlink/OpenLinksDirectlyPatchKt {

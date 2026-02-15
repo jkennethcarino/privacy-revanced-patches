@@ -2,6 +2,7 @@ package dev.jkcarino.revanced.patches.reddit.misc.sharing.url
 
 import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
 import app.revanced.patcher.patch.bytecodePatch
+import dev.jkcarino.revanced.patches.reddit.misc.firebase.spoofCertificateHashPatch
 
 @Suppress("unused")
 val sanitizeShareLinkPatch = bytecodePatch(
@@ -9,6 +10,8 @@ val sanitizeShareLinkPatch = bytecodePatch(
     description = "Unshortens and removes the tracking query parameters from shared links.",
     use = true,
 ) {
+    dependsOn(spoofCertificateHashPatch)
+
     compatibleWith("com.reddit.frontpage")
 
     execute {
