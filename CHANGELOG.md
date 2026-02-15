@@ -1,3 +1,10 @@
+# [4.6.0-dev.3](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.6.0-dev.2...v4.6.0-dev.3) (2026-02-15)
+
+
+### Features
+
+* **Reddit:** Add `Hide prominent search bar` patch ([425dcaf](https://github.com/jkennethcarino/privacy-revanced-patches/commit/425dcaf7f4965c0ad5fd0c8027e40bb4ae2e61eb))
+
 # [4.6.0-dev.2](https://github.com/jkennethcarino/privacy-revanced-patches/compare/v4.6.0-dev.1...v4.6.0-dev.2) (2026-01-10)
 
 
