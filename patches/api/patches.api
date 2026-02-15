@@ -135,6 +135,10 @@ public final class dev/jkcarino/revanced/patches/reddit/layout/screenshotbanner/
 	public static final fun getDisableScreenshotBannerPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
 
+public final class dev/jkcarino/revanced/patches/reddit/layout/search/ask/HideSearchAskButtonPatchKt {
+	public static final fun getHideSearchAskButtonPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
+}
+
 public final class dev/jkcarino/revanced/patches/reddit/layout/search/searchbar/HideProminentSearchBarPatchKt {
 	public static final fun getHideProminentSearchBarPatch ()Lapp/revanced/patcher/patch/BytecodePatch;
 }
